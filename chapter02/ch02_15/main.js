@@ -82,14 +82,43 @@
 
 // Решение с ||
 
-function checkAge(age) {
-  return age > 18 || confirm('Родители разрешили?');
-}
+// function checkAge(age) {
+//   return age > 18 || confirm('Родители разрешили?');
+// }
 
-console.log('checkAge(17)', checkAge(17));
-console.log('checkAge(18)', checkAge(18));
-console.log('checkAge(19)', checkAge(19));
+// console.log('checkAge(17)', checkAge(17));
+// console.log('checkAge(18)', checkAge(18));
+// console.log('checkAge(19)', checkAge(19));
 
 
 /** ----- */
 
+
+/** Проверяем блочную область видимости */
+
+// {
+//   function testScope() {
+//     console.log('test scope!');
+//   }
+
+//   testScope();
+// }
+// testScope(); // в режиме "use strict" - ReferenseError
+
+
+/** ---- */
+/** Проверка debugger */
+
+// function say(phrase) {
+//   console.log(phrase);
+// }
+
+// function hello(name) {
+//   const phrase = `Привет, ${name}`;
+
+//   debugger;
+
+//   say(phrase);
+// }
+
+// const cl = hello('World');
