@@ -130,3 +130,32 @@ exports.isEmpty = isEmpty;
  * поскольку ссылка на объект не изменяется, изменяются только свойства объекта
  */
 
+
+
+/**
+ * Задача 4. Сумма свойств объекта
+ * 
+ * У нас есть объект, в котором хранятся зарплаты нашей команды:
+ * 
+ * let salaries = {
+ *   John: 100,
+ *   Ann: 160,
+ *   Pete: 130
+ * }
+ * 
+ * Напишите код для суммирования всех зарплат и сохраните результат в переменной sum. Должно получиться 390.
+ * 
+ * Если объект salaries пуст, то результат должен быть 0.
+ */
+
+function getAmountSalaries(salaries) {
+  let result = 0;
+
+  for (let employe in salaries) {
+    result += salaries[employe];
+  }
+
+  return result;
+}
+
+exports.getAmountSalaries = getAmountSalaries;
