@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1712003839971" clover="3.2.0">
-  <project timestamp="1712003839971" name="All files">
-    <metrics statements="9" coveredstatements="9" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2" elements="17" coveredelements="17" complexity="0" loc="9" ncloc="9" packages="1" files="1" classes="1"/>
-    <file name="tasks.js" path="/home/tetr/learn/6seniors/learnjs/chapter02/ch02_15/tasks.js">
+<coverage generated="1712298541621" clover="3.2.0">
+  <project timestamp="1712298541621" name="All files">
+    <metrics statements="13" coveredstatements="13" conditionals="6" coveredconditionals="6" methods="3" coveredmethods="3" elements="22" coveredelements="22" complexity="0" loc="13" ncloc="13" packages="2" files="2" classes="2"/>
+    <package name="chapter02.ch02_15">
       <metrics statements="9" coveredstatements="9" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
-      <line num="10" count="4" type="cond" truecount="2" falsecount="0"/>
-      <line num="15" count="2" type="stmt"/>
-      <line num="28" count="5" type="cond" truecount="4" falsecount="0"/>
-      <line num="29" count="2" type="stmt"/>
-      <line num="32" count="3" type="stmt"/>
-      <line num="34" count="3" type="stmt"/>
-      <line num="35" count="102" type="stmt"/>
-      <line num="38" count="3" type="stmt"/>
-      <line num="41" count="2" type="stmt"/>
-    </file>
+      <file name="tasks.js" path="/home/tetr/learn/6seniors/learnjs/chapter02/ch02_15/tasks.js">
+        <metrics statements="9" coveredstatements="9" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
+        <line num="10" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="28" count="5" type="cond" truecount="4" falsecount="0"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="32" count="3" type="stmt"/>
+        <line num="34" count="3" type="stmt"/>
+        <line num="35" count="102" type="stmt"/>
+        <line num="38" count="3" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="chapter04.ch04_01">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="task.js" path="/home/tetr/learn/6seniors/learnjs/chapter04/ch04_01/task.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="102" count="2" type="stmt"/>
+        <line num="103" count="1" type="stmt"/>
+        <line num="105" count="1" type="stmt"/>
+        <line num="108" count="1" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>
