@@ -159,3 +159,41 @@ function getAmountSalaries(salaries) {
 }
 
 exports.getAmountSalaries = getAmountSalaries;
+
+
+
+/**
+ * Задача 5. Умножаем все числовые свойства на 2
+ * 
+ * Создайте функцию multiplyNumeric(obj), которая умножает все числовые свойства объекта obj на 2.
+ * 
+ * // до вызова функции
+ * let menu = {
+ *   width: 200,
+ *   height: 300,
+ *   title: "My menu"
+ * };
+ *
+ * multiplyNumeric(menu);
+ *
+ * // после вызова функции
+ * menu = {
+ *   width: 400,
+ *   height: 600,
+ *   title: "My menu"
+ * };
+ * 
+ * Обратите внимание, что multiplyNumeric не нужно ничего возвращать. Следует напрямую изменять объект.
+ */
+
+function multiplyNumeric(menu) {
+  for (let item in menu) {
+    const value = menu[item];
+
+    if (typeof value === 'number') {
+      menu[item] *= 2;
+    }
+  }
+}
+
+exports.multiplyNumeric = multiplyNumeric;
