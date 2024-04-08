@@ -4,7 +4,8 @@
   "description": "## Оглавление",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose",
+    "test": "jest",
+    "test-all": "jest --verbose",
     "coverage": "jest --verbose --coverage"
   },
   "author": "",
