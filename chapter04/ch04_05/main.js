@@ -48,13 +48,21 @@
  * Создание методов в конструкторе
  */
 
-function User(name) {
-  this.name = name;
+// function User(name) {
+//   this.name = name;
 
-  this.sayHi = function () {
-    console.log(`Привет! Меня зовут ${this.name}`);
-  };
-}
+//   this.sayHi = function () {
+//     console.log(`Привет! Меня зовут ${this.name}`);
+//   };
+// }
 
-const uasya = new User('Uasya');
-uasya.sayHi();
+// const uasya = new User('Uasya');
+// uasya.sayHi();
+
+// const user = {};
+
+// console.log(user.address?.street);
+
+// const html = document?.querySelector('.elem')?.innerHTML;
+
+// console.log(html);
