@@ -13,3 +13,4 @@
   - [4.5 Конструктор, оператор "new"](./chapter04/ch04_05/)
   - [4.7 Тип данных Symbol](./chapter04/ch04_07/)
   - [4.8 Преобразование объектов в примитивы](./chapter04/ch04_08/)
+  - [Задачи с codewars](./chapter04/addition/codewars/)
