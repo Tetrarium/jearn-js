@@ -14,3 +14,9 @@
   - [4.7 Тип данных Symbol](./chapter04/ch04_07/)
   - [4.8 Преобразование объектов в примитивы](./chapter04/ch04_08/)
   - [Задачи с codewars](./chapter04/addition/codewars/)
+
+Непроверенные задачи:
+  - codewars
+    - [Thinkful - Object Drills: Vectors](./unwatched/codewars/ThinkfulObject/)
+  - тестовые
+    - [test-task](./unwatched/test-tasks/)
