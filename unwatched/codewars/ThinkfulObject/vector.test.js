@@ -30,13 +30,13 @@ describe('test new Vector(3, 4)', () => {
   });
 
   test('метод add возвращает объект Vector', () => {
-    expect(vector.add(new Vector())).toBe(vector);
+    expect(vector.add(new Vector())).toBeInstanceOf(Vector);
   });
 
   test('метод add(v) корректно суммирует вектора', () => {
-    vector.add(new Vector(1, 2));
-    expect(vector.x).toBe(4);
-    expect(vector.y).toBe(6);
+    const newVector = new Vector(1, 2);
+    expect(vector.add(newVector).x).toBe(4);
+    expect(vector.add(newVector).y).toBe(6);
   });
 
   test('метод add без аргументов выбросит ошибку', () => {

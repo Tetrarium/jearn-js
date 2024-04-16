@@ -18,10 +18,13 @@ export default class Vector {
       throw new Error('Error! Аргумент не Vector');
     }
 
-    this.x += v.x;
-    this.y += v.y;
+    // this.x += v.x;
+    // this.y += v.y;
 
-    return this;
+    return new Vector(
+      this.x + v.x,
+      this.y + v.y,
+    );
   }
 
   getLength() {
