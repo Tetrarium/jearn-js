@@ -1,4 +1,4 @@
-// "use strict";
+"use strict";
 
 // const point = {
 //   x: 10,
@@ -347,15 +347,23 @@
 //   console.log(this);
 // })();
 
-const foo = {
-  bar: function () {
-    console.log(this);
-  }
-};
+// const foo = {
+//   bar: function () {
+//     console.log(this);
+//   }
+// };
 
-foo.bar();
-(foo.bar)();
+// foo.bar();
+// (foo.bar)();
 
-(foo.bar = foo.bar)();
-(true && foo.bar)();
-(foo.bar, foo.bar)();
+// (foo.bar = foo.bar)();
+// (true && foo.bar)();
+// (foo.bar, foo.bar)();
+
+function User() {
+  this.name = 'Uasya';
+
+  return this;
+}
+
+console.log(User());
