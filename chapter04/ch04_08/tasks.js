@@ -114,19 +114,19 @@
 //    если у объекта есть имя, и false в противном случае.
 //  - Выведите объект user в консоль, используя оператор!(отрицание).
 
-(() => {
-  function User(name) {
-    this.name = name;
+// (() => {
+//   function User(name) {
+//     this.name = name;
 
-    this.valueOf = function () {
-      return !!(this.name && this.name.length);
-    };
-  }
+//     this.valueOf = function () {
+//       return !!(this.name && this.name.length);
+//     };
+//   }
 
-  console.log((new User('vasya')).valueOf());
-  console.log((new User('')).valueOf());
-  console.log((new User()).valueOf());
-})();
+//   console.log((new User('vasya')).valueOf());
+//   console.log((new User('')).valueOf());
+//   console.log((new User()).valueOf());
+// })();
 
 
 // 4. Смешанное преобразование:
@@ -134,3 +134,21 @@
 //  - Напишите метод toString(), который будет возвращать строку вида "Координаты: [x], [y]".
 //  - Напишите метод valueOf(), который будет возвращать сумму координат x и y.
 //  - Выведите объект point в консоль, используя оператор сложения с числом.;
+
+(() => {
+  const point = {
+    x: 10,
+    y: 20,
+
+    toString() {
+      return (`Координаты: ${this.x}, ${this.y}`);
+    },
+
+    valueOf() {
+      return this.x + this.y;
+    }
+  };
+
+  console.log(point + 5);
+  console.log(point.toString());
+})();
