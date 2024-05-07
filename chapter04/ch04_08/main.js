@@ -48,11 +48,11 @@ const user = {
   }
 };
 
-console.log(user + '');
-console.log(user.toString());
-console.log('a' + user);
+// console.log(user + '');
+// console.log(user.toString());
+// console.log('a' + user);
 // alert(user);
-console.log(+user);
+// console.log(+user);
 
 // const user = { name: 'John' };
 // console.log('' + user);

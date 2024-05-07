@@ -75,6 +75,10 @@ const obj = {
   [globalS]: 'global',
 };
 
-console.log(Object.getOwnPropertySymbols(obj));
-console.log(Reflect.ownKeys(obj));
+// console.log(Object.getOwnPropertySymbols(obj));
+// console.log(Reflect.ownKeys(obj));
+// alert(localS); // TypeError
+
+// alert(localS.toString());
+// alert(localS.description);
 
