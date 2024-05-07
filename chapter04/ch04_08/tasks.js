@@ -42,25 +42,25 @@
 // 3. Создайте объект user с именем и возрастом,
 // и преобразуйте его в примитив при вычитании из другого объекта.;
 
-(() => {
-  function User(name, age) {
-    this.name = name;
-    this.age = age;
+// (() => {
+//   function User(name, age) {
+//     this.name = name;
+//     this.age = age;
 
-    this[Symbol.toPrimitive] = function (hint) {
-      console.log(hint);
-      return hint === 'string' || hint === 'default'
-        ? this.name
-        : this.age;
-    };
-  }
+//     this[Symbol.toPrimitive] = function (hint) {
+//       console.log(hint);
+//       return hint === 'string' || hint === 'default'
+//         ? this.name
+//         : this.age;
+//     };
+//   }
 
-  const vasya = new User('Uasya', 123);
-  const petya = new User('Petya', 456);
+//   const vasya = new User('Uasya', 123);
+//   const petya = new User('Petya', 456);
 
-  console.log(vasya + petya);
-  console.log(vasya - petya);
-})();
+//   console.log(vasya + petya);
+//   console.log(vasya - petya);
+// })();
 
 
 /**
@@ -72,6 +72,20 @@
 //  - Напишите метод toString(), который будет возвращать строку
 //    вида "Название: [title], Автор: [author], Год: [year]".
 //  - Выведите объект book в консоль, используя функцию console.log().
+
+(() => {
+  const book = {
+    title: 'The Adventures of Cipollino, the Little Onion',
+    author: 'Gianni Rodari',
+    year: 1951,
+
+    toString() {
+      return `Название: ${this.title}, Автор: ${this.author}, Год: ${this.year}`;
+    }
+  };
+
+  console.log(book.toString());
+})();
 
 
 // 2. Преобразование в число:
