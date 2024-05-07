@@ -95,17 +95,17 @@
 //    температуры в градусах Цельсия.
 //  - Выведите объект temperature в консоль, используя оператор сложения с числом.
 
-(() => {
-  const temperature = {
-    value: 36.6,
+// (() => {
+//   const temperature = {
+//     value: 36.6,
 
-    valueOf() {
-      return this.value;
-    }
-  };
+//     valueOf() {
+//       return this.value;
+//     }
+//   };
 
-  console.log(temperature + 0);
-})();
+//   console.log(temperature + 0);
+// })();
 
 
 // 3. Преобразование в логическое значение:
@@ -113,6 +113,20 @@
 //  - Напишите метод valueOf(), который будет возвращать логическое значение true,
 //    если у объекта есть имя, и false в противном случае.
 //  - Выведите объект user в консоль, используя оператор!(отрицание).
+
+(() => {
+  function User(name) {
+    this.name = name;
+
+    this.valueOf = function () {
+      return !!(this.name && this.name.length);
+    };
+  }
+
+  console.log((new User('vasya')).valueOf());
+  console.log((new User('')).valueOf());
+  console.log((new User()).valueOf());
+})();
 
 
 // 4. Смешанное преобразование:
