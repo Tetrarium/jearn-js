@@ -21,18 +21,18 @@
 // })();
 
 // Вариант 2
-(() => {
-  const user = {
-    name: 'Alex',
-    age: '35',
+// (() => {
+//   const user = {
+//     name: 'Alex',
+//     age: '35',
 
-    toString() {
-      return `name: ${this.name};\nage: ${this.age}`;
-    }
-  };
+//     toString() {
+//       return `name: ${this.name};\nage: ${this.age}`;
+//     }
+//   };
 
-  alert(user);
-})();
+//   alert(user);
+// })();
 
 
 // 2. Создайте объект user с именем и возрастом,
@@ -41,6 +41,26 @@
 
 // 3. Создайте объект user с именем и возрастом,
 // и преобразуйте его в примитив при вычитании из другого объекта.;
+
+(() => {
+  function User(name, age) {
+    this.name = name;
+    this.age = age;
+
+    this[Symbol.toPrimitive] = function (hint) {
+      console.log(hint);
+      return hint === 'string' || hint === 'default'
+        ? this.name
+        : this.age;
+    };
+  }
+
+  const vasya = new User('Uasya', 123);
+  const petya = new User('Petya', 456);
+
+  console.log(vasya + petya);
+  console.log(vasya - petya);
+})();
 
 
 /**
