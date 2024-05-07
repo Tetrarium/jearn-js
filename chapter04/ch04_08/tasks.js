@@ -3,6 +3,38 @@
 // 1. Создайте объект user с именем и возрастом,
 // и преобразуйте его в примитив при выводе на экран с помощью alert().
 
+// Вариант 1.
+// (() => {
+//   const user = {
+//     name: 'Alex',
+//     age: 30,
+
+//     [Symbol.toPrimitive](hint) {
+//       console.log(hint);
+//       return (hint === 'string')
+//         ? `Name: ${this.name}; Age: ${this.age};`
+//         : '';
+//     }
+//   };
+
+//   alert(user);
+// })();
+
+// Вариант 2
+(() => {
+  const user = {
+    name: 'Alex',
+    age: '35',
+
+    toString() {
+      return `name: ${this.name};\nage: ${this.age}`;
+    }
+  };
+
+  alert(user);
+})();
+
+
 // 2. Создайте объект user с именем и возрастом,
 // и преобразуйте его в примитив при сложении с другим объектом.
 
