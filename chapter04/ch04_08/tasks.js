@@ -73,19 +73,19 @@
 //    вида "Название: [title], Автор: [author], Год: [year]".
 //  - Выведите объект book в консоль, используя функцию console.log().
 
-(() => {
-  const book = {
-    title: 'The Adventures of Cipollino, the Little Onion',
-    author: 'Gianni Rodari',
-    year: 1951,
+// (() => {
+//   const book = {
+//     title: 'The Adventures of Cipollino, the Little Onion',
+//     author: 'Gianni Rodari',
+//     year: 1951,
 
-    toString() {
-      return `Название: ${this.title}, Автор: ${this.author}, Год: ${this.year}`;
-    }
-  };
+//     toString() {
+//       return `Название: ${this.title}, Автор: ${this.author}, Год: ${this.year}`;
+//     }
+//   };
 
-  console.log(book.toString());
-})();
+//   console.log(book.toString());
+// })();
 
 
 // 2. Преобразование в число:
@@ -94,6 +94,18 @@
 //  - Напишите метод valueOf(), который будет возвращать численное значение
 //    температуры в градусах Цельсия.
 //  - Выведите объект temperature в консоль, используя оператор сложения с числом.
+
+(() => {
+  const temperature = {
+    value: 36.6,
+
+    valueOf() {
+      return this.value;
+    }
+  };
+
+  console.log(temperature + 0);
+})();
 
 
 // 3. Преобразование в логическое значение:
