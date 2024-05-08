@@ -15,8 +15,6 @@
   - [4.8 Преобразование объектов в примитивы](./chapter04/ch04_08/)
   - [Задачи с codewars](./chapter04/addition/codewars/)
 
-Непроверенные задачи:
-  - codewars
-    - [Thinkful - Object Drills: Vectors](./unwatched/codewars/ThinkfulObject/)
-  - тестовые
-    - [test-task](./unwatched/test-tasks/)
+-[Глава 5. Типы данных](./chapter05/)
+
+  - [5.1 Методы примитивов](./chapter05/ch05_01/)
