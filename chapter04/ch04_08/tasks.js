@@ -135,20 +135,20 @@
 //  - Напишите метод valueOf(), который будет возвращать сумму координат x и y.
 //  - Выведите объект point в консоль, используя оператор сложения с числом.;
 
-(() => {
-  const point = {
-    x: 10,
-    y: 20,
+// (() => {
+//   const point = {
+//     x: 10,
+//     y: 20,
 
-    toString() {
-      return (`Координаты: ${this.x}, ${this.y}`);
-    },
+//     toString() {
+//       return (`Координаты: ${this.x}, ${this.y}`);
+//     },
 
-    valueOf() {
-      return this.x + this.y;
-    }
-  };
+//     valueOf() {
+//       return this.x + this.y;
+//     }
+//   };
 
-  console.log(point + 5);
-  console.log(point.toString());
-})();
+//   console.log(point + 5);
+//   console.log(point.toString());
+// })();

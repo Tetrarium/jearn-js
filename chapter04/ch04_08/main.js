@@ -1,6 +1,6 @@
 /**
  * Преобразование объектов в примитивы
- * 
+ *
  * https://learn.javascript.ru/object-toprimitive
  */
 
@@ -35,18 +35,18 @@
 //   }
 // };
 
-const user = {
-  name: 'John',
-  money: 1000,
+// const user = {
+//   name: 'John',
+//   money: 1000,
 
-  toString() {
-    return `{name: "${this.name}"}`;
-  },
+//   toString() {
+//     return `{name: "${this.name}"}`;
+//   },
 
-  valueOf() {
-    return this.money;
-  }
-};
+//   valueOf() {
+//     return this.money;
+//   }
+// };
 
 // console.log(user + '');
 // console.log(user.toString());
@@ -57,3 +57,58 @@ const user = {
 // const user = { name: 'John' };
 // console.log('' + user);
 // console.log(user.valueOf() === user);
+
+// Как сделать чтобы объект:
+// был равен определенному числу?
+// (() => {
+//   const obj = {
+//     [Symbol.toPrimitive]() {
+//       return 2;
+//     }
+//   };
+
+//   console.log(obj == 2);
+//   console.log(obj == 3);
+// })();
+
+
+// был равен определенной строке?
+// (() => {
+//   const obj = {
+//     [Symbol.toPrimitive]() {
+//       return 'something';
+//     }
+//   };
+
+//   console.log(obj == 'something');
+//   console.log(obj == 2);
+// })();
+
+
+// obj > 0 // true Как это сделать
+// (() => {
+//   const obj = {
+//     [Symbol.toPrimitive]() {
+//       return Infinity;
+//     }
+//   };
+
+//   console.log(obj > 0);
+//   console.log(obj > 1000);
+//   console.log(obj < 1000);
+// })();
+
+
+// String(obj < 0) + String(obj < 0) // "truefalse"
+// (() => {
+//   const obj = {
+//     [Symbol.for('num')]: Infinity,
+
+//     [Symbol.toPrimitive]() {
+//       return this[Symbol.for('num')] = -this[Symbol.for('num')];
+//     },
+
+//   };
+
+//   console.log(String(obj < 0) + String(obj < 0));
+// })(); 
