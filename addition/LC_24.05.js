@@ -49,9 +49,38 @@ export function toUpperString(str) {
 // //Вернуть два числа в сумме 21. Максимум один цикл.
 // let arr = [1, 3, 4, 6, 5, 10, 12, 7, 8, 11, 21, 22]
 //
-// function findPairWithSum(target, arr) {
-// // code here
+export function findPairWithSum(target, arr) {
+  // code here
+  const hash = new Set();
+
+  for (let i = 0; i < arr.length; i++) {
+    const a = arr[i];
+    const b = target - a;
+
+    if (hash.has(b)) {
+      return [b, a];
+    }
+
+    hash.add(a);
+  }
+
+  return null;
+}
+
+// export function findPairWithSum(target, arr) {
+//   let mapArr = new Map();
+//   for (let i = 0; i < arr.length; i++) {
+//     let num = arr[i];
+//     let complited = target - num;
+//     if (mapArr.has(complited)) {
+//       return [complited, arr[i]];
+//     }
+//     mapArr.set(num, i);
+//   }
 // }
+// console.log(findPairWithSum(10, arr));
+
+
 //
 // console.log(findPairWithSum(21, arr))
 // // __________________________________________________________________________
