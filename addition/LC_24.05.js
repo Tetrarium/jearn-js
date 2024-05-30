@@ -87,9 +87,9 @@ export function findPairWithSum(target, arr) {
 //
 // // 4
 // // Проверить, совпадают ли массивы чисел. Нельзя переводить в строки
-// function isSimilar(arr1, arr2) {
-// // code here
-// }
+export function isSimilar(arr1, arr2) {
+  // code here
+}
 //
 // isSimilar([0, 1, 2], [2, 1, 0])
 // console.log(isSimilar([0, 1, 2], [2, 1, 0])) // true
