@@ -207,3 +207,39 @@ function KeywordCipher(abc, keyword) {
     return replace(str, key, abc);
   };
 }
+
+// 2
+// Prize Draw
+// https://www.codewars.com/kata/5616868c81a0f281e500005c/train/javascript
+function getCharValue(char) {
+  return char.toUpperCase().charCodeAt() - 64;
+}
+
+function rank(st, we, n) {
+  const rawParticipants = st.split(',');
+
+  if (st.length === 0) {
+    return 'No participants';
+  }
+
+  if (rawParticipants.length < n) {
+    return 'Not enough participants';
+  }
+
+  const rankingParticipants = rawParticipants
+    .map((name, index) => {
+      let rank = name.length;
+
+      for (let i = 0; i < name.length; i++) {
+        rank += getCharValue(name[i]);
+      }
+
+      rank *= we[index];
+
+      return { rank, name };
+    })
+    .sort((part1, part2) => {
+      return (part2.rank - part1.rank) || ((part1.name > part2.name) ? 1 : -1);
+    });
+  return rankingParticipants[n - 1].name;
+}
