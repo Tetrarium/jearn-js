@@ -243,3 +243,59 @@ function rank(st, we, n) {
     });
   return rankingParticipants[n - 1].name;
 }
+
+
+// 3
+// T.T.T.23: Silly birds
+// https://www.codewars.com/kata/57a92d54e298a7c95000000d/train/javascript
+function getShotTimes(shot) {
+  const shots = shot.match(/Bang!/gi);
+  return shots ? shots.length : 0;
+}
+
+function isEmpty(cell) {
+  return cell === '_';
+}
+
+function getNextBirdsPositions(updown) {
+  const numWires = updown.length;
+  const numSteps = updown[0].length;
+
+  const mapWires = new Array(numWires)
+    .fill(true)
+    .map(item => new Array(numSteps).fill('_'));
+
+  for (let wire = 0; wire < numWires; wire++) {
+    const nextWire = (wire + 1) % numWires;
+    for (let step = 0; step < numSteps; step++) {
+      const cell = updown[wire][step];
+      if (isEmpty(cell)) {
+        continue;
+      }
+
+      if (isEmpty(updown[nextWire][step + 1])) {
+        mapWires[nextWire][step + 1] = 'B';
+      } else if (isEmpty(updown[nextWire][step - 1])) {
+        mapWires[nextWire][step - 1] = 'B';
+      }
+    }
+  }
+
+  return mapWires.map(wire => wire.join(''));
+}
+
+function sillyBirds(updown, shot) {
+  const shotTimes = getShotTimes(shot);
+
+  let previousState = updown;
+  let nextState = null;
+
+  for (let i = 0; i < shotTimes; i++) {
+    if (nextState) {
+      previousState = nextState;
+    }
+    nextState = getNextBirdsPositions(previousState);
+  }
+
+  return nextState;
+}
