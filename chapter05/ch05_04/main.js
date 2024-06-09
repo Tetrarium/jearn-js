@@ -77,31 +77,41 @@
 //   console.log(arr2.myShift());
 // })();
 
-(() => {
-  Array.prototype.myUnshift = function (...args) {
-    const shift = args.length;
-    const currentLength = this.length;
-    const newLength = currentLength + shift;
+// (() => {
+//   Array.prototype.myUnshift = function (...args) {
+//     const shift = args.length;
+//     const newLength = this.length + shift;
 
-    for (let i = newLength - 1; i >= shift; i--) {
-      this[i] = this[i - shift];
-    }
+//     for (let i = newLength - 1; i >= shift; i--) {
+//       this[i] = this[i - shift];
+//     }
 
-    for (let i = 0; i < shift; i++) {
-      this[i] = args[i];
-    }
+//     for (let i = 0; i < shift; i++) {
+//       this[i] = args[i];
+//     }
 
-    return newLength;
-  };
+//     return newLength;
+//   };
 
-  const arr = ['Pineapple', 'apple', 'pen'];
-  console.log(arr.myUnshift('Mango'));
-  console.log(arr);
-  console.log(arr.myUnshift());
-  console.log(arr);
-  console.log(arr.myUnshift('Orange', 'Pear'));
-  console.log(arr);
-  console.log(arr.unshift());
-  console.log(arr.unshift('Watermelon', 'Blueberry'));
-  console.log(arr);
-})();
+//   const arr = ['Pineapple', 'apple', 'pen'];
+//   console.log(arr.myUnshift('Mango'));
+//   console.log(arr);
+//   console.log(arr.myUnshift());
+//   console.log(arr);
+//   console.log(arr.myUnshift('Orange', 'Pear'));
+//   console.log(arr);
+//   console.log(arr.unshift());
+//   console.log(arr.unshift('Watermelon', 'Blueberry'));
+//   console.log(arr);
+// })();
+
+// (() => {
+//   console.log([1, 2] == '1,2');
+//   console.log([1, 2] == [1, 2]);
+//   console.log([0] == 0);
+//   console.log([0] == '0');
+//   console.log([0] == [0]);
+//   console.log([] == 0);
+//   console.log([] == '0');
+//   console.log([] == '');
+// })();
