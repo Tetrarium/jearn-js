@@ -83,6 +83,19 @@
 /** */
 // Подмассив наибольшей суммы
 // https://learn.javascript.ru/array#podmassiv-naibolshey-summy
-export function getMaxSubSum() {
-  return 0;
+export function getMaxSubSum(numbers) {
+  let maxSum = 0;
+  let currentMaxSum = 0;
+
+  for (let num of numbers) {
+    currentMaxSum += num;
+
+    currentMaxSum = currentMaxSum > 0 ? currentMaxSum : 0;
+
+    if (currentMaxSum > maxSum) {
+      maxSum = currentMaxSum;
+    }
+  }
+
+  return maxSum;
 }
