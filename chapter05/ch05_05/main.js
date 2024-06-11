@@ -128,41 +128,86 @@
 
 
 /** slice */
+// (() => {
+//   Array.prototype.mySlice = function (start, end) {
+//     if (start === undefined) {
+//       start = 0;
+//     }
+
+//     if (start < 0) {
+//       const newStart = this.length + start;
+//       start = newStart > 0 ? newStart : 0;
+//     }
+
+//     if (end === undefined) {
+//       end = this.length;
+//     }
+
+//     if (end < 0) {
+//       const newEnd = this.length + end;
+//       end = newEnd > 0 ? newEnd : 0;
+//     }
+
+//     const result = [];
+
+//     for (let i = start; i < end; i++) {
+//       result[i - start] = this[i];
+//     }
+
+//     return result;
+//   };
+
+//   const arr = 'test'.split('');
+
+//   console.log(arr.mySlice(1, 3));
+//   console.log(arr.mySlice(-2));
+
+//   console.log(arr.slice(-10, -1));
+//   console.log(arr.mySlice(-10, -1));
+
+// })();
+
+
+/** concat */
 (() => {
-  Array.prototype.mySlice = function (start, end) {
-    if (start === undefined) {
-      start = 0;
-    }
-
-    if (start < 0) {
-      const newStart = this.length + start;
-      start = newStart > 0 ? newStart : 0;
-    }
-
-    if (end === undefined) {
-      end = this.length;
-    }
-
-    if (end < 0) {
-      const newEnd = this.length + end;
-      end = newEnd > 0 ? newEnd : 0;
-    }
-
+  Array.prototype.myConcat = function (...args) {
     const result = [];
 
-    for (let i = start; i < end; i++) {
-      result[i - start] = this[i];
+    let index = 0;
+
+    // fill result from origin array 
+    while (index < this.length) {
+      result[index] = this[index];
+      index += 1;
+    }
+
+    // fill result from arguments
+    for (let i = 0; i < args.length; i++) {
+      const arg = args[i];
+      if (Array.isArray(arg)) {
+        for (let j = 0; j < arg.length; j++) {
+          result[index] = arg[j];
+          index += 1;
+        }
+      } else {
+        result[index] = arg;
+        index += 1;
+      }
     }
 
     return result;
   };
 
-  const arr = 'test'.split('');
+  (() => {
+    const arr = [1, 2];
 
-  console.log(arr.mySlice(1, 3));
-  console.log(arr.mySlice(-2));
-
-  console.log(arr.slice(-10, -1));
-  console.log(arr.mySlice(-10, -1));
-
+    console.log(arr.myConcat()); // [1, 2]
+    console.log(arr.myConcat([3, 4])); // [1, 2, 3, 4]
+    console.log(arr.concat([])); // [1, 2]
+    console.log(arr.myConcat([])); // [1, 2]
+    console.log(arr.myConcat([3, 4], [5, 6])); // [1, 2, 3, 4, 5, 6]
+    console.log(arr.myConcat([3, 4], 5, 6)); // [1, 2, 3, 4, 5, 6]
+    console.log(arr.myConcat([3, 4, [5, 6]])); // [1, 2, 3, 4, [5, 6]]
+    console.log(arr.concat([3, 4, [5, 6]])); // [1, 2, 3, 4, [5, 6]]
+  })();
 })();
