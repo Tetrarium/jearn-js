@@ -169,65 +169,81 @@
 
 
 /** concat */
+// (() => {
+//   Array.prototype.myConcat = function (...args) {
+//     const result = [];
+
+//     let index = 0;
+
+//     // fill result from origin array 
+//     while (index < this.length) {
+//       result[index] = this[index];
+//       index += 1;
+//     }
+
+//     // fill result from arguments
+//     for (let i = 0; i < args.length; i++) {
+//       const arg = args[i];
+
+//       if (Array.isArray(arg) || arg[Symbol.isConcatSpreadable]) {
+//         for (let j = 0; j < arg.length; j++) {
+//           result[index] = arg[j];
+//           index += 1;
+//         }
+//       } else {
+//         result[index] = arg;
+//         index += 1;
+//       }
+//     }
+
+//     return result;
+//   };
+
+//   (() => {
+//     const arr = [1, 2];
+
+//     console.log(arr.myConcat()); // [1, 2]
+//     console.log(arr.myConcat([3, 4])); // [1, 2, 3, 4]
+//     console.log(arr.concat([])); // [1, 2]
+//     console.log(arr.myConcat([])); // [1, 2]
+//     console.log(arr.myConcat([3, 4], [5, 6])); // [1, 2, 3, 4, 5, 6]
+//     console.log(arr.myConcat([3, 4], 5, 6)); // [1, 2, 3, 4, 5, 6]
+//     console.log(arr.myConcat([3, 4, [5, 6]])); // [1, 2, 3, 4, [5, 6]]
+//     console.log(arr.concat([3, 4, [5, 6]])); // [1, 2, 3, 4, [5, 6]]
+
+//     const arrayLike = {
+//       0: 'something',
+//       length: 1
+//     };
+//     console.log(arr.myConcat(arrayLike));
+
+//     // myConcat с этим не работает
+//     // надо подумать как пофиксить
+//     // Проблема решена добавлением проверки на [Symbol.isConcatSpreadable]
+//     const arrayLike2 = {
+//       0: 'something',
+//       1: 'again',
+//       [Symbol.isConcatSpreadable]: true,
+//       length: 2,
+//     };
+
+//     console.log(arr.myConcat(arrayLike2));
+//     console.log(arr.concat(arrayLike2));
+//   })();
+// })();
+
+/** forEach */
 (() => {
-  Array.prototype.myConcat = function (...args) {
-    const result = [];
-
-    let index = 0;
-
-    // fill result from origin array 
-    while (index < this.length) {
-      result[index] = this[index];
-      index += 1;
+  Array.prototype.myForEach = function (cb) {
+    for (let i = 0; i < this.length; i++) {
+      cb(this[i], i, this);
     }
-
-    // fill result from arguments
-    for (let i = 0; i < args.length; i++) {
-      const arg = args[i];
-
-      if (Array.isArray(arg) || arg[Symbol.isConcatSpreadable]) {
-        for (let j = 0; j < arg.length; j++) {
-          result[index] = arg[j];
-          index += 1;
-        }
-      } else {
-        result[index] = arg;
-        index += 1;
-      }
-    }
-
-    return result;
   };
 
-  (() => {
-    const arr = [1, 2];
+  const arr = ["Бильбо", "Гэндальф", "Назгул"];
 
-    // console.log(arr.myConcat()); // [1, 2]
-    // console.log(arr.myConcat([3, 4])); // [1, 2, 3, 4]
-    // console.log(arr.concat([])); // [1, 2]
-    // console.log(arr.myConcat([])); // [1, 2]
-    // console.log(arr.myConcat([3, 4], [5, 6])); // [1, 2, 3, 4, 5, 6]
-    // console.log(arr.myConcat([3, 4], 5, 6)); // [1, 2, 3, 4, 5, 6]
-    // console.log(arr.myConcat([3, 4, [5, 6]])); // [1, 2, 3, 4, [5, 6]]
-    // console.log(arr.concat([3, 4, [5, 6]])); // [1, 2, 3, 4, [5, 6]]
-
-    const arrayLike = {
-      0: 'something',
-      length: 1
-    };
-    console.log(arr.myConcat(arrayLike));
-
-    // myConcat с этим не работает
-    // надо подумать как пофиксить
-    // Проблема решена добавлением проверки на [Symbol.isConcatSpreadable]
-    const arrayLike2 = {
-      0: 'something',
-      1: 'again',
-      [Symbol.isConcatSpreadable]: true,
-      length: 2,
-    };
-
-    console.log(arr.myConcat(arrayLike2));
-    console.log(arr.concat(arrayLike2));
-  })();
+  arr.myForEach(console.log);
+  arr.myForEach((item, index, array) => {
+    console.log(`У ${item} индекс ${index} в ${array}`);
+  });
 })();
