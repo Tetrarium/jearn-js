@@ -233,17 +233,51 @@
 // })();
 
 /** forEach */
+// (() => {
+//   Array.prototype.myForEach = function (cb) {
+//     for (let i = 0; i < this.length; i++) {
+//       cb(this[i], i, this);
+//     }
+//   };
+
+//   const arr = ["Бильбо", "Гэндальф", "Назгул"];
+
+//   arr.myForEach(console.log);
+//   arr.myForEach((item, index, array) => {
+//     console.log(`У ${item} индекс ${index} в ${array}`);
+//   });
+// })();
+
+
+/** indexOf */
 (() => {
-  Array.prototype.myForEach = function (cb) {
-    for (let i = 0; i < this.length; i++) {
-      cb(this[i], i, this);
+  Array.prototype.myIndexOf = function (searchElement, fromIndex = 0) {
+    const { length } = this;
+
+    if (fromIndex >= length) {
+      return -1;
     }
+
+    if (fromIndex < 0) {
+      const newIndex = length + fromIndex;
+      fromIndex = newIndex > 0 ? newIndex : 0;
+    }
+
+    for (let i = fromIndex; i < length; i++) {
+      if (this[i] === searchElement) {
+        return i;
+      }
+    }
+
+    return -1;
   };
 
-  const arr = ["Бильбо", "Гэндальф", "Назгул"];
+  (() => {
+    console.log('Тесты');
+    const arr = [1, 0, false];
 
-  arr.myForEach(console.log);
-  arr.myForEach((item, index, array) => {
-    console.log(`У ${item} индекс ${index} в ${array}`);
-  });
+    console.log(arr.myIndexOf(0));
+    console.log(arr.myIndexOf(false));
+    console.log(arr.myIndexOf(null));
+  })();
 })();
