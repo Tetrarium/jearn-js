@@ -250,34 +250,100 @@
 
 
 /** indexOf */
+// (() => {
+//   Array.prototype.myIndexOf = function (searchElement, fromIndex = 0) {
+//     const { length } = this;
+
+//     if (fromIndex >= length) {
+//       return -1;
+//     }
+
+//     if (fromIndex < 0) {
+//       const newIndex = length + fromIndex;
+//       fromIndex = newIndex > 0 ? newIndex : 0;
+//     }
+
+//     for (let i = fromIndex; i < length; i++) {
+//       if (this[i] === searchElement) {
+//         return i;
+//       }
+//     }
+
+//     return -1;
+//   };
+
+//   (() => {
+//     console.log('Тесты');
+//     const arr = [1, 0, false];
+
+//     console.log(arr.myIndexOf(0));
+//     console.log(arr.myIndexOf(false));
+//     console.log(arr.myIndexOf(null));
+//   })();
+// })();
+
+/** find, findIndex, findLastIndex */
 (() => {
-  Array.prototype.myIndexOf = function (searchElement, fromIndex = 0) {
-    const { length } = this;
+  console.log('examples from book');
 
-    if (fromIndex >= length) {
-      return -1;
+  function User(name) {
+    if (!User.nextId) User.nextId = 1;
+
+    this.name = name;
+    this.id = User.nextId++;
+  }
+
+  const users = ['Вася', 'Петя', 'Maша', 'Вася']
+    .map(name => new User(name));
+
+  const user = users.find(item => item.id === 1);
+  console.log(user);
+
+  console.log(users.findIndex(user => user.name === 'Вася'));
+  console.log(users.findLastIndex(user => user.name === 'Вася'));
+  console.log(users.findLastIndex((user, index) => {
+    console.log(`Index: ${index}`);
+    user.name === 'Вася';
+  }));
+
+
+  Array.prototype.myFind = function (cb) {
+    for (let i = 0; i < this.length; i++) {
+      if (cb(this[i], i, this) === true) return this[i];
     }
 
-    if (fromIndex < 0) {
-      const newIndex = length + fromIndex;
-      fromIndex = newIndex > 0 ? newIndex : 0;
-    }
+    return undefined;
+  };
+  console.log('test myFind');
+  console.log(users.myFind(user => user.id === 2));
+  console.log(users.myFind(user => user.id === 4));
+  console.log(users.myFind(user => user.id === 5));
 
-    for (let i = fromIndex; i < length; i++) {
-      if (this[i] === searchElement) {
+
+  Array.prototype.myFindIndex = function (cb) {
+    for (let i = 0; i < this.length; i++) {
+      if (cb(this[i], i, this) === true) {
         return i;
       }
     }
 
-    return -1;
+    return undefined;
   };
+  console.log('test myFindIndex');
+  console.log(users.myFindIndex(user => user.name === 'Вася'));
 
-  (() => {
-    console.log('Тесты');
-    const arr = [1, 0, false];
-
-    console.log(arr.myIndexOf(0));
-    console.log(arr.myIndexOf(false));
-    console.log(arr.myIndexOf(null));
-  })();
+  Array.prototype.myFindLastIndex = function (cb) {
+    for (let i = this.length - 1; i >= 0; i--) {
+      if (cb(this[i], i, this) === true) {
+        return i;
+      }
+    }
+    return undefined;
+  };
+  console.log('test myFindLastIndex');
+  console.log(users.myFindLastIndex(user => user.name === 'Вася'));
+  console.log(users.myFindLastIndex((user, index) => {
+    console.log(`Index: ${index}`);
+    user.name === 'Вася';
+  }));
 })();
