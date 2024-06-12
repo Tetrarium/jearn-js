@@ -282,68 +282,95 @@
 //   })();
 // })();
 
+/** create user  */
+function User(name) {
+  if (!User.nextId) User.nextId = 1;
+
+  this.name = name;
+  this.id = User.nextId++;
+}
+
 /** find, findIndex, findLastIndex */
+// (() => {
+//   console.log('examples from book');
+
+//   const users = ['Вася', 'Петя', 'Maша', 'Вася']
+//     .map(name => new User(name));
+
+//   const user = users.find(item => item.id === 1);
+//   console.log(user);
+
+//   console.log(users.findIndex(user => user.name === 'Вася'));
+//   console.log(users.findLastIndex(user => user.name === 'Вася'));
+//   console.log(users.findLastIndex((user, index) => {
+//     console.log(`Index: ${index}`);
+//     user.name === 'Вася';
+//   }));
+
+
+//   Array.prototype.myFind = function (cb) {
+//     for (let i = 0; i < this.length; i++) {
+//       if (cb(this[i], i, this) === true) return this[i];
+//     }
+
+//     return undefined;
+//   };
+//   console.log('test myFind');
+//   console.log(users.myFind(user => user.id === 2));
+//   console.log(users.myFind(user => user.id === 4));
+//   console.log(users.myFind(user => user.id === 5));
+
+
+//   Array.prototype.myFindIndex = function (cb) {
+//     for (let i = 0; i < this.length; i++) {
+//       if (cb(this[i], i, this) === true) {
+//         return i;
+//       }
+//     }
+
+//     return undefined;
+//   };
+//   console.log('test myFindIndex');
+//   console.log(users.myFindIndex(user => user.name === 'Вася'));
+
+//   Array.prototype.myFindLastIndex = function (cb) {
+//     for (let i = this.length - 1; i >= 0; i--) {
+//       if (cb(this[i], i, this) === true) {
+//         return i;
+//       }
+//     }
+//     return undefined;
+//   };
+//   console.log('test myFindLastIndex');
+//   console.log(users.myFindLastIndex(user => user.name === 'Вася'));
+//   console.log(users.myFindLastIndex((user, index) => {
+//     console.log(`Index: ${index}`);
+//     user.name === 'Вася';
+//   }));
+// })();
+
+
+/** filter */
 (() => {
-  console.log('examples from book');
+  Array.prototype.myFilter = function (cb) {
+    const result = [];
+    let index = 0;
 
-  function User(name) {
-    if (!User.nextId) User.nextId = 1;
-
-    this.name = name;
-    this.id = User.nextId++;
-  }
-
-  const users = ['Вася', 'Петя', 'Maша', 'Вася']
-    .map(name => new User(name));
-
-  const user = users.find(item => item.id === 1);
-  console.log(user);
-
-  console.log(users.findIndex(user => user.name === 'Вася'));
-  console.log(users.findLastIndex(user => user.name === 'Вася'));
-  console.log(users.findLastIndex((user, index) => {
-    console.log(`Index: ${index}`);
-    user.name === 'Вася';
-  }));
-
-
-  Array.prototype.myFind = function (cb) {
-    for (let i = 0; i < this.length; i++) {
-      if (cb(this[i], i, this) === true) return this[i];
-    }
-
-    return undefined;
-  };
-  console.log('test myFind');
-  console.log(users.myFind(user => user.id === 2));
-  console.log(users.myFind(user => user.id === 4));
-  console.log(users.myFind(user => user.id === 5));
-
-
-  Array.prototype.myFindIndex = function (cb) {
     for (let i = 0; i < this.length; i++) {
       if (cb(this[i], i, this) === true) {
-        return i;
+        result[index] = this[i];
+        index += 1;
       }
     }
-
-    return undefined;
+    return result;
   };
-  console.log('test myFindIndex');
-  console.log(users.myFindIndex(user => user.name === 'Вася'));
 
-  Array.prototype.myFindLastIndex = function (cb) {
-    for (let i = this.length - 1; i >= 0; i--) {
-      if (cb(this[i], i, this) === true) {
-        return i;
-      }
-    }
-    return undefined;
-  };
-  console.log('test myFindLastIndex');
-  console.log(users.myFindLastIndex(user => user.name === 'Вася'));
-  console.log(users.myFindLastIndex((user, index) => {
-    console.log(`Index: ${index}`);
-    user.name === 'Вася';
-  }));
+  (() => {
+    console.log('test array.myFilter');
+    const users = 'Вася Петя Маша'
+      .split(' ')
+      .map(name => new User(name));
+
+    console.log(users.filter(user => user.id < 3));
+  })();
 })();
