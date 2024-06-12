@@ -351,13 +351,55 @@ function User(name) {
 
 
 /** filter */
+// (() => {
+//   Array.prototype.myFilter = function (cb) {
+//     const result = [];
+//     let index = 0;
+
+//     for (let i = 0; i < this.length; i++) {
+//       if (cb(this[i], i, this) === true) {
+//         result[index] = this[i];
+//         index += 1;
+//       }
+//     }
+//     return result;
+//   };
+
+//   (() => {
+//     console.log('test array.myFilter');
+//     const users = 'Вася Петя Маша'
+//       .split(' ')
+//       .map(name => new User(name));
+
+//     console.log(users.filter(user => user.id < 3));
+//   })();
+// })();
+
+/** thisArg */
 (() => {
-  Array.prototype.myFilter = function (cb) {
+  const army = {
+    minAge: 18,
+    maxAge: 27,
+    canJoin(user) {
+      return user.age > this.minAge && user.age < this.maxAge;
+    }
+  };
+
+  const users = [
+    { age: 16 },
+    { age: 20 },
+    { age: 23 },
+    { age: 30 },
+  ];
+
+  console.log(users.filter(army.canJoin, army));
+
+  Array.prototype.myFilter = function (cb, thisArg) {
     const result = [];
     let index = 0;
 
     for (let i = 0; i < this.length; i++) {
-      if (cb(this[i], i, this) === true) {
+      if (cb.call(thisArg, this[i], i, this) === true) {
         result[index] = this[i];
         index += 1;
       }
@@ -365,12 +407,5 @@ function User(name) {
     return result;
   };
 
-  (() => {
-    console.log('test array.myFilter');
-    const users = 'Вася Петя Маша'
-      .split(' ')
-      .map(name => new User(name));
-
-    console.log(users.filter(user => user.id < 3));
-  })();
+  console.log(users.myFilter(army.canJoin, army));
 })();
