@@ -376,36 +376,36 @@ function User(name) {
 // })();
 
 /** thisArg */
-(() => {
-  const army = {
-    minAge: 18,
-    maxAge: 27,
-    canJoin(user) {
-      return user.age > this.minAge && user.age < this.maxAge;
-    }
-  };
+// (() => {
+//   const army = {
+//     minAge: 18,
+//     maxAge: 27,
+//     canJoin(user) {
+//       return user.age > this.minAge && user.age < this.maxAge;
+//     }
+//   };
 
-  const users = [
-    { age: 16 },
-    { age: 20 },
-    { age: 23 },
-    { age: 30 },
-  ];
+//   const users = [
+//     { age: 16 },
+//     { age: 20 },
+//     { age: 23 },
+//     { age: 30 },
+//   ];
 
-  console.log(users.filter(army.canJoin, army));
+//   console.log(users.filter(army.canJoin, army));
 
-  Array.prototype.myFilter = function (cb, thisArg) {
-    const result = [];
-    let index = 0;
+//   Array.prototype.myFilter = function (cb, thisArg) {
+//     const result = [];
+//     let index = 0;
 
-    for (let i = 0; i < this.length; i++) {
-      if (cb.call(thisArg, this[i], i, this) === true) {
-        result[index] = this[i];
-        index += 1;
-      }
-    }
-    return result;
-  };
+//     for (let i = 0; i < this.length; i++) {
+//       if (cb.call(thisArg, this[i], i, this) === true) {
+//         result[index] = this[i];
+//         index += 1;
+//       }
+//     }
+//     return result;
+//   };
 
-  console.log(users.myFilter(army.canJoin, army));
-})();
+//   console.log(users.myFilter(army.canJoin, army));
+// })();
