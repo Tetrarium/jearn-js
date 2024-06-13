@@ -77,6 +77,11 @@ export function filterRangeInPlace(arr, a, b) {
     }
   }
 }
-const arr = [5, 3, 8, 1];
-filterRangeInPlace(arr, 2, 5);
-console.log(arr);
+
+
+// 6 Фильтрация по диапазону
+// https://learn.javascript.ru/array-methods#filtratsiya-po-diapazonu
+export function filterRange(arr, a, b) {
+  return arr.filter(item => item >= a && item <= b);
+}
+
