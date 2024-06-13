@@ -61,3 +61,22 @@ export function Calculator() {
     this.methods[operator] = fn;
   };
 }
+
+
+// 5 Фильтрация по диапазону "на месте"
+// https://learn.javascript.ru/array-methods#filtratsiya-po-diapazonu-na-meste
+export function filterRangeInPlace(arr, a, b) {
+  let index = 0;
+
+  while (index < arr.length) {
+    const item = arr[index];
+    if (item >= a && item <= b) {
+      index += 1;
+    } else {
+      arr.splice(index, 1);
+    }
+  }
+}
+const arr = [5, 3, 8, 1];
+filterRangeInPlace(arr, 2, 5);
+console.log(arr);
