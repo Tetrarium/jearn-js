@@ -37,3 +37,27 @@ export function camelize(str) {
   console.log(sorted);
   console.log(arr);
 })();
+
+
+// 4. Создать расширяемый калькулятор
+// https://learn.javascript.ru/array-methods#sozdat-rasshiryaemyy-kalkulyator
+export function Calculator() {
+  this.methods = {
+    '+'(a, b) {
+      return a + b;
+    },
+
+    '-'(a, b) {
+      return a - b;
+    }
+  };
+  this.calculate = function (expression) {
+    const [a, operator, b] = expression.split(' ');
+
+    return this.methods[operator](+a, +b);
+  };
+
+  this.addMethod = function (operator, fn) {
+    this.methods[operator] = fn;
+  };
+}
