@@ -222,3 +222,51 @@ function task05_05_11() {
   console.log(giveAverageAge(arr));
 }
 task05_05_11();
+
+
+// 12 Оставить уникальные элементы массива
+// https://learn.javascript.ru/array-methods#ostavit-unikalnye-elementy-massiva
+// Здесь, считаю постановка тесты больше подходят для задачи - удалить дубликаты
+function uniqueElements(arr) {
+  const quantity = {};
+  for (let item of arr) {
+    if (quantity[item]) {
+      quantity[item] += 1;
+    } else {
+      quantity[item] = 1;
+    }
+  }
+
+  const result = [];
+
+  for (let key in quantity) {
+    if (quantity[key] === 1) {
+      result.push(key);
+    }
+  }
+
+  return result;
+}
+
+function deleteDuplicates(arr) {
+  // Как ваниант
+  // const set = new Set(arr);
+  // return Array.from(set);
+
+  const result = [];
+  const exists = {};
+
+  for (let item of arr) {
+    if (!exists[item]) {
+      exists[item] = true;
+      result.push(item);
+    }
+  }
+
+  return result;
+}
+const strings = ["кришна", "кришна", "харе", "харе",
+  "харе", "харе", "кришна", "кришна", ":-O"
+];
+console.log(uniqueElements(strings));
+console.log(deleteDuplicates(strings));
