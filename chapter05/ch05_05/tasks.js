@@ -120,4 +120,24 @@ function task05_05_08() {
 
   console.log(usersMapped);
 }
-task05_05_08();
+// task05_05_08();
+
+
+// 9 Отсортировать пользователей по возрасту
+// https://learn.javascript.ru/array-methods#otsortirovat-polzovateley-po-vozrastu
+function task05_05_09() {
+  const vasya = { name: "Вася", age: 25 };
+  const petya = { name: "Петя", age: 30 };
+  const masha = { name: "Маша", age: 28 };
+
+  const users = [vasya, petya, masha];
+
+  function sortByAge(users) {
+    users.sort((user1, user2) => user1.age - user2.age);
+  }
+
+  console.log(users);
+  sortByAge(users);
+  console.log(users);
+}
+task05_05_09();
