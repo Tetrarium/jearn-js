@@ -85,3 +85,39 @@ export function filterRange(arr, a, b) {
   return arr.filter(item => item >= a && item <= b);
 }
 
+
+// 7 Трансформировать в массив имён
+// https://learn.javascript.ru/array-methods#transformirovat-v-massiv-imyon
+function task05_05_07() {
+  const vasya = { name: "Вася", age: 25 };
+  const petya = { name: "Петя", age: 30 };
+  const masha = { name: "Маша", age: 28 };
+
+  const users = [vasya, petya, masha];
+
+  const names = users.map(user => user.name);
+
+  console.log(names);
+}
+// task05_05_07();
+
+
+// 8 Трансформировать в объекты
+// https://learn.javascript.ru/array-methods#transformirovat-v-obekty
+function task05_05_08() {
+  const petya = { name: "Петя", surname: "Иванов", id: 2 };
+  const vasya = { name: "Вася", surname: "Пупкин", id: 1 };
+  const masha = { name: "Маша", surname: "Петрова", id: 3 };
+
+  const users = [vasya, petya, masha];
+
+  const usersMapped = users.map(user => (
+    {
+      fullName: user.name + ' ' + user.surname,
+      id: user.id,
+    }
+  ));
+
+  console.log(usersMapped);
+}
+task05_05_08();
