@@ -151,6 +151,7 @@ function task05_05_09() {
 // https://learn.javascript.ru/array-methods#peremeshayte-massiv
 // Сам не решил. Подсмотрел
 function task05_05_10() {
+  console.log('task 10');
   function testShiffle(fn) {
     const count = {};
 
@@ -202,3 +203,22 @@ function task05_05_10() {
   task10_2();
 }
 // task05_05_10();
+
+
+// 11 Получить средний возраст
+// https://learn.javascript.ru/array-methods#poluchit-sredniy-vozrast
+function task05_05_11() {
+  console.log('task 11');
+  const vasya = { name: "Вася", age: 25 };
+  const petya = { name: "Петя", age: 30 };
+  const masha = { name: "Маша", age: 29 };
+
+  const arr = [vasya, petya, masha];
+
+  function giveAverageAge(arr) {
+    return arr.reduce((total, user) => total + user.age, 0) / arr.length;
+  }
+
+  console.log(giveAverageAge(arr));
+}
+task05_05_11();
