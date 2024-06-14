@@ -221,7 +221,7 @@ function task05_05_11() {
 
   console.log(giveAverageAge(arr));
 }
-task05_05_11();
+// task05_05_11();
 
 
 // 12 Оставить уникальные элементы массива
@@ -268,5 +268,15 @@ function deleteDuplicates(arr) {
 const strings = ["кришна", "кришна", "харе", "харе",
   "харе", "харе", "кришна", "кришна", ":-O"
 ];
-console.log(uniqueElements(strings));
-console.log(deleteDuplicates(strings));
+// console.log(uniqueElements(strings));
+// console.log(deleteDuplicates(strings));
+
+
+// 13 Создайте объект с ключами из массива
+// https://learn.javascript.ru/array-methods#sozdayte-obekt-s-klyuchami-iz-massiva
+export function groupById(users) {
+  return users.reduce((group, user) => {
+    group[user.id] = { ...user };
+    return group;
+  }, {});
+}
