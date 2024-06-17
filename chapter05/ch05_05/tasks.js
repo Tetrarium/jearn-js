@@ -276,7 +276,7 @@ const strings = ["кришна", "кришна", "харе", "харе",
 // https://learn.javascript.ru/array-methods#sozdayte-obekt-s-klyuchami-iz-massiva
 export function groupById(users) {
   return users.reduce((group, user) => {
-    group[user.id] = { ...user };
+    group[user.id] = user;
     return group;
   }, {});
 }
