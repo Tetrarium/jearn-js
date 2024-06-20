@@ -49,6 +49,86 @@ function example5_7_2() {
 // example5_7_2();
 
 
+function example5_7_3() {
+  console.log('Перебор Map');
+
+  const recipeMap = new Map([
+    ['огурец', 500],
+    ['помидор', 500],
+    ['лук', 50],
+  ]);
+
+  console.log(recipeMap);
+
+  console.log(recipeMap.keys());
+  for (let vegetable of recipeMap.keys()) {
+    console.log(vegetable);
+  }
+
+  console.log(recipeMap.values());
+  for (let amount of recipeMap.values()) {
+    console.log(amount);
+  }
+
+  console.log(recipeMap.entries());
+  for (let val of recipeMap) {
+    console.log(val);
+  }
+
+  for (let entry of recipeMap.entries()) {
+    console.log(entry);
+  }
+
+  console.log(recipeMap.toString());
+  console.log(recipeMap.valueOf());
+
+  console.log(recipeMap.valueOf() === recipeMap);
+
+  console.log('\nforEach');
+  recipeMap.forEach((value, key, map) => {
+    console.log('value: ', value);
+    console.log('key: ', key);
+    console.log('map: ', map);
+    console.log('^^^^^');
+  });
+}
+// example5_7_3();
 
 
+function example5_7_4() {
+  console.log('Object.entries: Map из Object');
+
+  const map = new Map([
+    ['1', 'str'],
+    [1, 'num'],
+    [true, 'bool'],
+  ]);
+
+  console.log(map);
+
+  const obj = {
+    name: 'John',
+    age: 30,
+  };
+
+  console.log(new Map(Object.entries(obj)));
+}
+// example5_7_4();
+
+function example5_7_5() {
+  console.log('Object.fromEntries: Object из Map');
+
+  const entries = [
+    ['banana', 1],
+    ['orange', 2],
+    ['meat', 4],
+  ];
+
+  console.log(Object.fromEntries(entries));
+
+  const map = new Map(entries);
+  console.log(map);
+  console.log(Object.fromEntries(map));
+}
+// example5_7_5();
 
