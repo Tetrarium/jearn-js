@@ -23,7 +23,7 @@ export function withdraw(cashObject, amount) {
   for (const bill of bills) {
     if (bill > remainder) continue;
 
-    const needCountBills = Math.floor(remainder / bill);
+    const needCountBills = ~~(remainder / bill);
 
     if (needCountBills <= cashObject[bill]) {
       issue[bill] = needCountBills;
