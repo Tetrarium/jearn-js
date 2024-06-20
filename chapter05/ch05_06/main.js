@@ -177,4 +177,4 @@ function example5_6_7() {
 
   console.log(slice('𝒳😂𩷶', 1, 3));
 }
-example5_6_7();
+// example5_6_7();
