@@ -1,3 +1,4 @@
+console.log('tasks');
 // таска с LC от Бахтияра
 //   Задача 5: Реализация функциональности банкомата
 //   Описание: Вам необходимо создать функцию withdraw,
@@ -58,3 +59,45 @@ export function withdraw(cashObject, amount) {
 export function unique(arr) {
   return [...(new Set(arr))];
 }
+
+
+// 2. Отфильтруйте анаграммы
+// https://learn.javascript.ru/map-set#otfiltruyte-anagrammy
+
+
+export function aclean(arr) {
+  const wordsMap = new Map();
+
+  arr.forEach(word => {
+    const sorted = word
+      .toLowerCase()
+      .split('')
+      .sort()
+      .join('');
+
+    wordsMap.set(sorted, word);
+  });
+
+  return [...wordsMap.values()];
+}
+
+
+// 3. Перебираемые ключи
+// https://learn.javascript.ru/map-set#perebiraemye-klyuchi
+function task5_7_3() {
+  console.log('task 3');
+  let map = new Map();
+
+  map.set("name", "John");
+
+  // let keys = map.keys();
+  // Поскольку keys - перебираемый объект,
+  // его нужно сделать массивом
+  const keys = [...map.keys()];
+
+
+  // Error: keys.push is not a function
+  // Ошибка: keys.push -- это не функция
+  console.log(keys.push("more"));
+}
+task5_7_3();
