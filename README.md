@@ -24,3 +24,4 @@
   - [5.5 Методы массивов](./chapter05/ch05_05/)
   - [5.6 Перебираемые объекты](./chapter05/ch05_06/)
   - [5.7 Map и Set](./chapter05/ch05_07/)
+  - [5.8WeakMap и WeakSet](./chapter05/ch05_08/)
