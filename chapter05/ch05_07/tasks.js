@@ -54,3 +54,7 @@ export function withdraw(cashObject, amount) {
 
 // 1. Фильтрация уникальных элементов массива
 // https://learn.javascript.ru/map-set#filtratsiya-unikalnyh-elementov-massiva
+
+export function unique(arr) {
+  return [...(new Set(arr))];
+}
