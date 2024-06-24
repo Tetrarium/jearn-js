@@ -12,3 +12,8 @@ export function sumSalaries(salaries) {
 }
 
 
+// 2. Подсчёт количества свойств объекта
+// https://learn.javascript.ru/keys-values-entries#podschyot-kolichestva-svoystv-obekta
+export function count(obj) {
+  return Object.keys(obj).length;
+}
