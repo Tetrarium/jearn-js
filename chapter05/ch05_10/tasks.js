@@ -17,3 +17,18 @@ function task5_10_1() {
 task5_10_1();
 
 
+// 2. Максимальная зарплата
+// Максимальная зарплата
+export function topSalary(salaries) {
+  let topPerson = {
+    salary: 0,
+  };
+
+  for (const [name, salary] of Object.entries(salaries)) {
+    if (salary > topPerson.salary) {
+      topPerson = { name, salary };
+    }
+  }
+
+  return topPerson.name || null;
+}
