@@ -26,3 +26,4 @@
   - [5.7 Map и Set](./chapter05/ch05_07/)
   - [5.8 WeakMap и WeakSet](./chapter05/ch05_08/)
   - [5.9 Object.keys, values, entries](./chapter05/ch05_09/)
+  - [5.10 Деструктурирующее присваивание](./chapter05/ch05_10/)
