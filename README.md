@@ -27,3 +27,7 @@
   - [5.8 WeakMap и WeakSet](./chapter05/ch05_08/)
   - [5.9 Object.keys, values, entries](./chapter05/ch05_09/)
   - [5.10 Деструктурирующее присваивание](./chapter05/ch05_10/)
+
+- [Глава 6. Продвинутая работа с функциями](./chapter06/)
+
+  - [6.1 Рекурсия и стек](./chapter06/ch06_01/)
