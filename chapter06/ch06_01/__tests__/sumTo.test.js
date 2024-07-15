@@ -1,7 +1,9 @@
-import { iterationSumTo } from "../tasks";
+import { iterationSumTo, recursionSumTo, progressionSumTo } from "../tasks";
 
 describe.each([
-  ['iterationSumTo', iterationSumTo]
+  ['iterationSumTo', iterationSumTo],
+  ['recursionSumTo', recursionSumTo],
+  ['progressionSumTo', progressionSumTo],
 ])('test function %s', (nameFn, fn) => {
   test.each([
     [0, 0],
