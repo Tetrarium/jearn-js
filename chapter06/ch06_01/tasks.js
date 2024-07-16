@@ -35,7 +35,47 @@ export function progressionSumTo(number) {
 
 
 // 2. Вычислить факториал
+// https://learn.javascript.ru/recursion#vychislit-faktorial
 
 export function factorial(n) {
   return n <= 2 ? n : n * factorial(n - 1);
+}
+
+
+// 3. Числа Фибоначчи
+// https://learn.javascript.ru/recursion#chisla-fibonachchi
+
+// вариант с рекурсией
+export function fib(n) {
+  if (!fib.cache) {
+    fib.cache = {};
+  }
+
+  if (fib.cache[n]) {
+    return fib.cache[n];
+  }
+
+  if (n <= 2) {
+    return 1;
+  }
+
+  const current = fib(n - 1) + fib(n - 2);
+  fib.cache[n] = current;
+  return current;
+}
+
+// вариант с итерацией
+export function iterativeFib(n) {
+  if (n <= 2) {
+    return 1;
+  }
+
+  let [prev, current] = [1, 1];
+
+  for (let i = 3; i <= n; i++) {
+    const next = prev + current;
+    [prev, current] = [current, next];
+  }
+
+  return current;
 }

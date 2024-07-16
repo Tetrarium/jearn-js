@@ -72,3 +72,6 @@ function example6_1_3() {
   console.log(sumSalaries(company));
 }
 // example6_1_3();
+
+import { fib } from "./tasks.js";
+console.log(fib(77));
