@@ -1,6 +1,7 @@
 // 1. Вычислить сумму чисел до данного
 // https://learn.javascript.ru/recursion#vychislit-summu-chisel-do-dannogo
 // Какой вариант решения самый быстрый? Самый медленный? Почему?
+// Unit тесты: ./__tests__
 // Тести на производительность ./performance/sumTo.js
 
 // 1.1 С использованием цикла.
@@ -31,3 +32,10 @@ export function progressionSumTo(number) {
   return number * (number + 1) / 2;
 }
 // 0.19ms / 10_000 вызовов - самый бастрый вариант
+
+
+// 2. Вычислить факториал
+
+export function factorial(n) {
+  return n <= 2 ? n : n * factorial(n - 1);
+}

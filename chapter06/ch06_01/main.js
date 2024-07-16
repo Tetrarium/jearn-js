@@ -71,4 +71,4 @@ function example6_1_3() {
 
   console.log(sumSalaries(company));
 }
-example6_1_3();
+// example6_1_3();
