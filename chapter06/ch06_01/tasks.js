@@ -94,6 +94,19 @@ export function iterativeFib(n) {
 // 3. Вывод односвязного списка
 // https://learn.javascript.ru/recursion#vyvod-odnosvyaznogo-spiska
 
-export function printList(list) {
-  return [];
+export function iterativePrintList(list) {
+  let current = list;
+
+  while (current) {
+    alert(current.value);
+    current = current.next;
+  }
+}
+
+export function recursivePrintList(list) {
+  alert(list.value);
+
+  if (list.next) {
+    recursivePrintList(list.next);
+  }
 }
