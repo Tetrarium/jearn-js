@@ -48,15 +48,19 @@ export function factorial(n) {
 // вариант с рекурсией
 export function fib(n) {
   if (!fib.cache) {
-    fib.cache = {};
+    fib.cache = [0, 1, 1];
+    fib.MAX_CALL = 6000;
   }
 
   if (fib.cache[n]) {
     return fib.cache[n];
   }
 
-  if (n <= 2) {
-    return 1;
+  // Решение проблемы с переполнением стека
+  // Без дополнительного кэширования происходит
+  // Переполнение стека начиная с передачи функции числа 9042
+  if (n > (fib.MAX_CALL + fib.cache.length)) {
+    fib(fib.cache.length + fib.MAX_CALL);
   }
 
   const current = fib(n - 1) + fib(n - 2);
@@ -78,4 +82,18 @@ export function iterativeFib(n) {
   }
 
   return current;
+}
+/**
+ * По производительности
+ * До 20_000 итератиыный и рекурсивный варианты работают одинаково
+ * при передаче аргумента с большимзначением рекурсивный вариант
+ * проигрывает итеративному
+ */
+
+
+// 3. Вывод односвязного списка
+// https://learn.javascript.ru/recursion#vyvod-odnosvyaznogo-spiska
+
+export function printList(list) {
+  return [];
 }

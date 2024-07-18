@@ -17,6 +17,6 @@ function showPerformanceOneCall(fn, num) {
   console.log(`Only one call ${fn.name}(${num}): ${performance.now() - startTime}ms`);
 }
 
-const NUM = 9_042;
+const NUM = 20_000;
 showPerformanceOneCall(fib, NUM);
 showPerformanceOneCall(iterativeFib, NUM);
