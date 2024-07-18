@@ -8,6 +8,7 @@ class Node {
 class LinkedList {
   constructor() {
     this.head = null;
+    this.tall = null;
   }
 
   append(data) {
@@ -15,14 +16,13 @@ class LinkedList {
 
     if (!this.head) {
       this.head = node;
+    } 
+    
+    if (!this.tall) {
+      this.tall = node;
     } else {
-      const current = this.head;
-  
-      while(current.next) {
-        current = current.next;
-      }
-  
-      current.next = node;
+      this.tall.next = node;
+      this.tall = node;
     }
 
     return node;
@@ -45,5 +45,7 @@ console.log(list.append(1));
 console.log(list);
 
 list.append(2);
+list.append(3);
+list.append(4);
 
 list.printData();
