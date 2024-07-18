@@ -110,3 +110,29 @@ export function recursivePrintList(list) {
     recursivePrintList(list.next);
   }
 }
+
+
+// 4. Вывод односвязного списка в обратном порядке
+// https://learn.javascript.ru/recursion#vyvod-odnosvyaznogo-spiska-v-obratnom-poryadke
+export function iterativeReversePrintList(list) {
+  const values = [];
+
+  let current = list;
+
+  while (current) {
+    values.push(current.value);
+    current = current.next;
+  }
+
+  for (let i = values.length - 1; i >= 0; i--) {
+    alert(values[i]);
+  }
+}
+
+export function recursiveReversePrintList(list) {
+  if (list.next) {
+    recursiveReversePrintList(list.next);
+  }
+
+  alert(list.value);
+}
