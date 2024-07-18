@@ -114,3 +114,17 @@ list.printData();
 list.reverse();
 list.printData();
 console.log(list);
+
+
+function printList(list) {
+  if (list.head) {
+    list = list.head;
+  }
+
+  console.log(list.data);
+  if (list.next) {
+    printList(list.next);
+  }
+}
+console.log('print list external function');
+printList(list);
