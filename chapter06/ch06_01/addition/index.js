@@ -17,7 +17,7 @@ class LinkedList {
     if (!this.head) {
       this.head = node;
     } 
-    
+
     if (!this.tall) {
       this.tall = node;
     } else {
@@ -36,6 +36,55 @@ class LinkedList {
       current = current.next;
     }
   }
+
+  search(query) {
+    let current = this.head;
+
+    while(current) {
+      if (current.data === query) {
+        return true;
+      }
+
+      current = current.next;
+    }
+
+    return false;
+  }
+
+  remove(target) {
+    if (this.head.data === target) {
+      this.head = this.head.next;
+      return target;
+    }
+
+    let current = this.head;
+    let previous = none;
+
+    while (current) {
+      if (current.data === target) {
+        previous.next = current.next;
+        return target;
+      }
+
+      previous = current;
+      current = current.next;
+    }
+
+    return null;
+  }
+
+  reverse() {
+    let current = this.head;
+    let previous = null;
+
+    while (current) {
+      let next = current.next;
+      current.next = previous;
+      [previous, current] = [current, next];
+    }
+
+    [this.head, this.tall] = [this.tall, this.head];
+  }
 }
 
 const list = new LinkedList();
@@ -49,3 +98,19 @@ list.append(3);
 list.append(4);
 
 list.printData();
+
+console.log(list.search(3));
+console.log(list.search(4));
+console.log(list.search(5));
+
+list.printData();
+list.remove(1);
+list.printData();
+console.log(list);
+
+console.log('-----');
+console.log('reverse list');
+list.printData();
+list.reverse();
+list.printData();
+console.log(list);
