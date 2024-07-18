@@ -74,4 +74,4 @@ function example6_1_3() {
 // example6_1_3();
 
 import { fib } from "./tasks.js";
-console.log(fib(77));
+// console.log(fib(77));

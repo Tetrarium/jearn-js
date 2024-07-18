@@ -18,5 +18,5 @@ function showPerformanceOneCall(fn, num) {
 }
 
 const NUM = 20_000;
-showPerformanceOneCall(fib, NUM);
-showPerformanceOneCall(iterativeFib, NUM);
+// showPerformanceOneCall(fib, NUM);
+// showPerformanceOneCall(iterativeFib, NUM);
