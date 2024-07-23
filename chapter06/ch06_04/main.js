@@ -1,4 +1,4 @@
-console.log('Chapter 6.3');
+console.log('Chapter 6.4');
 
 // function sayHi() {
 //   var phrase = 'Hello';
