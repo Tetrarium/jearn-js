@@ -1,4 +1,4 @@
-console.log('Chapter 6.6');
+console.log('Chapter 6.7');
 
 // const sum = new Function('a', 'b', 'return a + b');
 
@@ -20,12 +20,15 @@ console.log('Chapter 6.6');
 // getFunc()();
 
 
-function getFunc() {
-  const value = 'test';
+// function getFunc() {
+//   const value = 'test';
 
-  const func = function() {console.log(value)};
+//   const func = function() {console.log(value)};
 
-  return func;
-}
+//   return func;
+// }
 
-getFunc()();
+// getFunc()();
+
+
+
