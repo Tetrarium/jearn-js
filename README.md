@@ -38,3 +38,4 @@
   - [6.6 Объект функции, NFE](./chapter06/ch06_06/)
   - [6.7 Синтаксис "new Function"](./chapter06/ch06_07/)
   - [6.8 Планирование: setTimeout и setInterval](./chapter06/ch06_08/)
+  - [6.9 Декораторы и переадресация вызова, call/apply](./chapter06/ch06_09/)
