@@ -27,5 +27,13 @@ export function delay(f, ms) {
 // 3. Декоратор debounce
 // https://learn.javascript.ru/call-apply-decorators#dekorator-debounce
 export function debounce(f, ms) {
+  let timerId;
   
+  return function () {
+    clearTimeout(timerId);
+
+    timerId = setTimeout(() => {
+      f.apply(this, arguments);
+    }, ms);
+  };
 }
