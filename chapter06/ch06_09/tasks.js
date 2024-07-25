@@ -37,3 +37,24 @@ export function debounce(f, ms) {
     }, ms);
   };
 }
+
+
+// 4. Тормозящий (throttling) декоратор
+// https://learn.javascript.ru/call-apply-decorators#tormozyaschiy-throttling-dekorator
+export function throttle(f, ms) {
+  let isEnable = true;
+  let lastArgs = [];
+
+  return function wrap(...args) {
+    lastArgs = args;
+    if (isEnable) {
+      isEnable = false;
+      f.apply(this, args);
+
+      setTimeout(() => {
+        isEnable = true;
+        wrap(...lastArgs);
+      }, ms);
+    }
+  }
+}
