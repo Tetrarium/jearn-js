@@ -165,4 +165,42 @@ function example6_10_10() {
   user.sayNow = partial(user.say, new Date().getHours() + ':' + new Date().getMinutes());
   user.sayNow('Hello');
 }
-example6_10_10();
+// example6_10_10();
+
+
+// Addition examples
+
+// myBind method
+function example6_10_11() {
+  Function.prototype.myBind = function (ctx, ...rest) {
+    const methodName = Symbol(this.name);
+    const thisArg = {
+      [methodName]: this,
+    }
+
+    Object.assign(thisArg, ctx); //
+
+    return (...args) => {
+      return thisArg[methodName](...rest, ...args);
+    }
+  }
+
+  const user = {
+    firstName: 'Vasya',
+  };
+
+  function func() {
+    console.log(this.firstName);
+  }
+
+  const funcUser = func.myBind(user);
+  funcUser();
+
+  function mul(a, b) {
+    return a * b;
+  }
+
+  const double = mul.myBind(null, 2);
+  console.log(double(5));
+}
+example6_10_11();
