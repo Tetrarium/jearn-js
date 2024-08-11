@@ -132,3 +132,59 @@ function example6_9_5() {
   console.log(worker.slow(2, 5));
 }
 // example6_9_5();
+
+
+// Addition examples
+// Method myCall;
+function example6_9_6() {
+  console.log('myCall');
+
+  Function.prototype.myCall = function(ctx, ...args) {
+    if (!ctx) {
+      return this(...args);
+    }
+
+    const thisArg = {
+      ...ctx,
+      [this.name]: this
+    }
+
+    return thisArg[this.name](...args);
+  }
+
+  const worker = {
+    someMethod() {
+      return 1;
+    },
+
+    slow(x) {
+      console.log(`Called with ${x}`);
+      return x * this.someMethod();
+    }
+  }
+
+  function cachingDecorator(func) {
+    const cache = new Map();
+
+    return function(x) {
+      if (cache.has(x)) {
+        return cache.get(x);
+      }
+
+      const result = func.myCall(this, x);
+      cache.set(x, result);
+      return result;
+    }
+  }
+
+  console.log( worker.slow(1) );
+
+  worker.slow = cachingDecorator(worker.slow);
+  console.log( worker.slow(2) );
+  console.log( worker.slow(2) );
+  console.log( worker.slow(3) );
+
+  console.log.myCall(null, 2, 3);
+  console.log.myCall({}, 4, 5);
+}
+example6_9_6();
