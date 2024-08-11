@@ -187,4 +187,61 @@ function example6_9_6() {
   console.log.myCall(null, 2, 3);
   console.log.myCall({}, 4, 5);
 }
-example6_9_6();
+// example6_9_6();
+
+
+// method myApply
+function example6_9_7() {
+  console.log('myApply');
+
+  Function.prototype.myApply = function(ctx, args) {
+    console.log(ctx);
+    console.log(args);
+
+    if (!ctx) {
+      return this(...args);
+    }
+
+    const thisArg = {
+      ...ctx,
+      [this.name]: this,
+    }
+
+    return thisArg[this.name](...args);
+  }
+
+  const worker = {
+    name: 'Worker',
+    slow(min, max) {
+      console.log(`Called with ${min},${max}, in ${this.name} context`);
+      return min + max;
+    }
+  }
+
+  function cachingDecorator(fn, hash) {
+    const cache = new Map();
+
+    return function() {
+      const key = hash(arguments);
+
+      if (cache.has(key)) {
+        return cache.get(key);
+      }
+
+      const result = fn.myApply(this, arguments);
+      cache.set(key, result);
+      return result;
+    }
+
+
+  }
+
+  function hash() {
+    return [].join.call(arguments);
+  }
+
+  worker.slow = cachingDecorator(worker.slow, hash);
+  console.log(worker.slow(3, 5));
+  console.log(worker.slow(3, 5));
+}
+example6_9_7();
