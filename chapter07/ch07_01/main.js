@@ -205,4 +205,119 @@ function example7_1_8() {
   console.log(Object.getOwnPropertyDescriptors(obj.prop2));
   console.log(Object.getOwnPropertyDescriptors(obj.prop1)); // У символов стоки тоже есть дискрипторы
 }
-example7_1_8();
+// example7_1_8();
+
+
+function example7_1_9() {
+  console.log(Object.getOwnPropertyDescriptors('a'));
+  // 'a'.length = 2;
+
+  console.log(Object.getOwnPropertyDescriptors(1));
+
+  console.log(Object.getOwnPropertyDescriptors(Symbol('a')));
+
+  console.log(Object.getOwnPropertyDescriptors(true));
+
+  console.log(Object.getOwnPropertyDescriptors(BigInt(1)));
+
+  // console.log(Object.getOwnPropertyDescriptors(null));
+
+  // console.log(Object.getOwnPropertyDescriptors(undefined));
+
+  console.log(Object.getOwnPropertyDescriptors([1, 2]));
+
+  console.log(Object.getOwnPropertyDescriptors(new Set('asdf')));
+
+  console.log(Object.getOwnPropertyDescriptors(new Map()));
+
+  console.log(Object.getOwnPropertyDescriptors(() => {}));
+
+  console.log(Object.getOwnPropertyDescriptors(function fn(a, b) { return a + b }));
+}
+// example7_1_9();
+
+
+function showCheckConstraints(obj) {
+  console.log('object has:')
+  console.log(`- isExtensible: ${Object.isExtensible(obj)}`);
+  console.log(`- isSealed: ${Object.isSealed(obj)}`);
+  console.log(`- isFrozen: ${Object.isFrozen(obj)}`);
+  console.log('------')
+}
+
+function example7_1_10() {
+  const obj1 = {
+    prop1: 'asdf',
+  }
+  showCheckConstraints(obj1);
+
+  Object.preventExtensions(obj1);
+  showCheckConstraints(obj1);
+  const copyObj1 = Object.assign({}, obj1);
+  showCheckConstraints(copyObj1);
+  console.log(Object.getOwnPropertyDescriptors(obj1));
+  console.log(Object.getOwnPropertyDescriptors(copyObj1));
+
+  const obj2 = {
+    prop1: 'val1',
+  }
+  Object.seal(obj2);
+  showCheckConstraints(obj2);
+  console.log(Object.getOwnPropertyDescriptors(obj2));
+  const copyObj2 = Object.assign({}, obj2);
+  console.log(Object.getOwnPropertyDescriptors(copyObj2));
+  showCheckConstraints(copyObj2);
+
+
+  const obj3 = {
+    prop1: 'val1',
+  }
+  Object.freeze(obj3);
+  showCheckConstraints(obj3);
+  showObj(obj3);
+  const copyObj3 = Object.assign({}, obj3);
+  console.log(Object.getOwnPropertyDescriptors(obj3));
+  console.log(Object.getOwnPropertyDescriptors(copyObj3));
+  showCheckConstraints(copyObj3);
+}
+// example7_1_10();
+
+
+function example7_1_11() {
+  // check myBind with frozenObject
+  const obj = {
+    prop: 'val'
+  }
+  Object.freeze(obj);
+
+  function fn() {
+    console.log(this.prop);
+  }
+
+  const fnBindObj = fn.bind(obj);
+  fnBindObj();
+
+  Function.prototype.myBind = function(ctx, ...bindArgs) {
+    const method = Symbol('m');
+
+    const thisArg = Object.assign({
+      [method]: this,
+    }, ctx);
+
+
+    return (...args) => {
+      return thisArg[method](...bindArgs, ...args);
+    }
+  }
+
+  const fnMyBindObj = fn.myBind(obj);
+  fnMyBindObj();
+
+  function mul(a, b) {
+    return a * b;
+  }
+
+  const double = mul.bind(null, 2);
+  console.log(double(3));
+}
+example7_1_11();
