@@ -135,8 +135,21 @@ function example7_1_5() {
   // obj.prop4 = 'val4'; // низзя
   obj.prop1 = 'val4'; // можно
   console.log(obj);
+
+  for (const key in obj) {
+    console.log(key, ':', obj[key]);
+  }
 }
 // example7_1_5();
+
+function showObj(obj) {
+  const fields = []
+  for (const key in obj) {
+    fields.push(`  ${key}: ${obj[key]}`);
+  }
+
+  console.log('{\n' + fields.join('\n') + '\n}');
+} 
 
 function example7_1_6() {
   const obj = {
@@ -148,9 +161,48 @@ function example7_1_6() {
 
   Object.seal(obj);
   // obj.prop4 = 'val4'; // нельзя
-  obj.prop1 = 'val5';
+  obj.prop1 = 'val5'; // можно
   console.log(obj);
   console.log(Object.getOwnPropertyDescriptors(obj));
   // Object.defineProperty(obj, 'val2', {writable: false}); // нельзя
+
+  showObj(obj);
 }
-example7_1_6();
+// example7_1_6();
+
+
+function example7_1_7() {
+  // Object.freeze(obj)
+  const obj = {
+    prop1: 'val1',
+    prop2: 'val2',
+  }
+
+  obj.prop3 = 'val3',
+
+  Object.freeze(obj);
+  console.log(Object.getOwnPropertyDescriptors(obj));
+  // obj.prop4 = 'val4' // TypeError
+  // obj.prop1 = 'val5'; // TypeError
+}
+// example7_1_7();
+
+
+function example7_1_8() {
+  const obj = {
+    prop1: 'val1',
+    prop2: {
+      subprop1: 'val2',
+    }
+  }
+
+  Object.freeze(obj);
+  // obj.prop2 = 'val3'; // TypeError
+  obj.prop2.subprop1 = 'val4' // можно
+  console.log(obj);
+
+  console.log(Object.getOwnPropertyDescriptors(obj));
+  console.log(Object.getOwnPropertyDescriptors(obj.prop2));
+  console.log(Object.getOwnPropertyDescriptors(obj.prop1)); // У символов стоки тоже есть дискрипторы
+}
+example7_1_8();
