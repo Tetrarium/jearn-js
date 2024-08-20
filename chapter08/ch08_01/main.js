@@ -226,5 +226,45 @@ function example8_1_9() {
   lazy.eat('orange');
   lazy.eat('banana');
   console.log( lazy.stomach ); // apple
+  // console.log(hamster.__proto__);
 }
-example8_1_9();
+// example8_1_9();
+
+
+function example8_1_10() {
+  const obj = {};
+  console.log(obj.__proto__.__proto__);
+
+  const arr = []
+  console.log(arr.__proto__.__proto__);
+
+  function foo() {}
+  console.log(Function.prototype);
+  console.log(foo.__proto__.__proto__);
+
+  const set = new Set();
+  console.log(set.__proto__.__proto__);
+
+  const str = 'abc';
+  console.log(str.__proto__.__proto__);
+
+  const num = 1;
+  console.log(num.__proto__);
+
+  const bigint = 1n;
+  console.log(bigint);
+  console.log(bigint.__proto__.__proto__);
+
+  const bool = true;
+  console.log(bool.__proto__);
+
+  const sym = Symbol('s');
+  console.log(sym.__proto__.__proto__);
+
+  const varNull = null;
+  // console.log(varNull.__proto__);
+
+  const undef = undefined;
+  // console.log(undef.__proto__);
+}
+// example8_1_10();
