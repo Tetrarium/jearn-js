@@ -200,3 +200,31 @@ function example8_1_8() {
   console.log(whiteRabbit.__proto__.constructor === Rabbit);
 }
 // example8_1_8();
+
+function example8_1_9() {
+  let hamster = {
+    stomach: [],
+  
+    eat(food) {
+      this.stomach = [...this.stomach, food];
+    }
+  };
+  
+  let speedy = {
+    __proto__: hamster
+  };
+  
+  let lazy = {
+    __proto__: hamster
+  };
+  
+  // Этот хомяк нашёл еду
+  speedy.eat("apple");
+  console.log( speedy.stomach ); // apple
+  
+  // У этого хомяка тоже есть еда. Почему? Исправьте
+  lazy.eat('orange');
+  lazy.eat('banana');
+  console.log( lazy.stomach ); // apple
+}
+example8_1_9();
