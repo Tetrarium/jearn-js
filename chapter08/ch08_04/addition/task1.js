@@ -3,10 +3,11 @@ function Test() {
 }
 
 function Test2() {
+  this.test = 456;
   // Test.call(this);
 }
 
-Test2.prototype.__proto__ = Test.prototype;
+Test2.prototype.__proto__ = new Test();
 
 console.log(new Test2().test);
 
