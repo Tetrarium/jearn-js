@@ -72,22 +72,25 @@ const user = {
   skills: {
     languages: ['Russian', 'English'],
     programming: ['JS', 'TS', 'HTML'],
+  },
+  foo() {
+    return this.name;
   }
 };
 
-const copiedUser = Object.assign({}, user);
-log('copiedUser === user', copiedUser === user);
-log('copiedUser.skills === user.skills', copiedUser.skills === user.skills); // true
+// const copiedUser = Object.assign({}, user);
+// log('copiedUser === user', copiedUser === user);
+// log('copiedUser.skills === user.skills', copiedUser.skills === user.skills); // true
 // Копирование происходит поверхностно, те есть, если
 // значением свойств будут объекты, эти объекты будут одними и теми же
 // как в источнике, так и в приемнике
 
 // Копирование через rest оператор
 
-const copied2 = { ...user };
-log('copied2', copied2);
-log('copied2 === user', copied2 === user);
-log('copied2.skills === user.skills', copied2.skills === user.skills);
+// const copied2 = { ...user };
+// log('copied2', copied2);
+// log('copied2 === user', copied2 === user);
+// log('copied2.skills === user.skills', copied2.skills === user.skills);
 // При rest - копирование в свойствах так же копируетсяссылка на объект
 
 
@@ -102,9 +105,17 @@ function deepCopy(obj) {
 
     if (typeof value === 'object' && !Array.isArray(value)) {
       copiedObj[key] = deepCopy(value);
+    } else if (typeof value === 'function') {
+      copiedObj[key] = function (...args) {
+        return value.apply(this, args);
+      }
+    } else if (Array.isArray(value)) {
+      copiedObj[key] = [...value];
     } else {
       copiedObj[key] = value;
     }
+
+    
   }
 
   return copiedObj;
@@ -115,3 +126,12 @@ const deepCopyUser = deepCopy(user);
 log('deepCopyUser', deepCopyUser);
 log('deepCopyUser === user', deepCopyUser === user);
 log('deepCopyUser.skills === user.skills', deepCopyUser.skills === user.skills);
+console.log(deepCopyUser);
+console.log(deepCopyUser.foo())
+console.log(user.foo === deepCopyUser.foo);
+deepCopyUser.name = 'Vasya';
+console.log(deepCopyUser.foo());
+
+const petya = { name: 'Petya' };
+petya.getName = deepCopyUser.foo;
+console.log(petya.getName());
