@@ -1,0 +1,46 @@
+.task-box {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.task-box__divider {
+  width: 100%;
+  height: 2px;
+  background-color: #aeaeae;
+  border: none;
+  margin: 10px 0;
+}
+
+.task-box__result {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background-color: #eee;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #aaa;
+  overflow: hidden;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  border: 1px solid gray;
+  gap: 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.form__row {
+  width: 100%;
+  text-align: end;
+}
+
+.form__label {
+  width: 100%;
+}
+
+.form__label input {
+  width: 60%;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Анимация круга с помощью промиса</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="./circle.css">
+</head>
+<body>
+  <header>
+    <a href="../">Назад</a>
+    <h2>
+      <a href="https://learn.javascript.ru/async" target="_blank">11 Промисы, async/await</a>
+    </h2>
+    <h3>
+      <a href="https://learn.javascript.ru/promise-basics" target="_blank">11.2 Промисы</a>
+    </h3>
+    <h4>
+      Задача <a href="https://learn.javascript.ru/task/animate-circle-promise" target="_blank">Анимация круга с помощью промиса</a>
+    </h4>
+  </header>
+  <main>
+    <div class="task-box">
+      <form class="task-box__form form" id="circle-control">
+        <div class="form__row">
+          <label class="form__label">
+            cx: <input name="cx" type="number" value="150" />
+          </label>
+        </div>
+        <div class="form__row">
+          <label class="form__label">
+            cy: <input name="cy" type="number" value="150" />
+          </label>
+        </div>
+        <div class="form__row">
+          <label class="form__label">
+            radius: <input name="radius" type="number" value="100" />
+          </label>
+        </div>
+        <div class="form__row">
+          <label class="form__label">
+            bgcolor: <input name="bgcolor" type="color" value="#ff0000" />
+          </label>
+        </div>
+        <div class="form__row">
+          <button type="submit">Нарисовать</button>
+        </div>
+      </form>
+      <div class="task-box__divider"></div>
+      <div class="task-box__result" id="result">
+        <!-- <div class="circle"></div> -->
+      </div>
+    </div>
+    <script src="./index.js"></script>
+  </main>
+</body>
+</html>

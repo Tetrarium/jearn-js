@@ -1,0 +1,13 @@
+.circle {
+  position: absolute;
+  /* width: 100px;
+  height: 100px;
+  top: 0;
+  left: 0; */
+  background-color: #ff0000;
+  border-radius: 50%;
+
+  transition-property: width, height;
+  transition-duration: 2s;
+  transform: translateX(-50%) translateY(-50%);
+}
