@@ -2,7 +2,6 @@ const resultBox = document.querySelector('#result');
 const circle = document.createElement('div');
 circle.className = 'circle';
 
-resultBox.append(circle);
 
 const controlForm = document.getElementById('circle-control');
 console.dir(controlForm.elements);
@@ -30,17 +29,14 @@ function rerenderCircle(params) {
   circle.style.left = cx + 'px';
   circle.style.top = cy + 'px';
   circle.style.backgroundColor = bgcolor;
-  
+  circle.style.width = circle.style.height = 0;
+  resultBox.append(circle);
 
-  Promise.resolve()
-    .then(() => {
-    })
-    .then(() => {
-      circle.style.width = circle.style.height = 0;
-    })
-    .then(() => {
-      circle.style.height = circle.style.width = radius / 2 + 'px';
-    })
+  setTimeout(() => {
+    circle.style.height = circle.style.width = radius * 2 + 'px';
+  })
+
+  
 }
 
 // renderCircle(circleParams);
