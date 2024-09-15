@@ -13,6 +13,28 @@ let circleParams = {
   bgcolor: '#ff0000',
 }
 
+/**
+ * 
+ * @param {string} hex 
+ * @returns {string}
+ */
+function getContrastColor(hex) {
+  hex = hex.replace('#', '');
+
+  const [r, g, b] = new Array(3)
+    .fill('')
+    .map((_, i) => {
+      const j = i * 2;
+      return parseInt(hex.substring(j, j + 2), 16);
+    });
+  
+  console.log(r, g, b);
+  const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+
+  console.log(brightness);
+  console.log(brightness > 128);
+  return brightness > 128 ? '#000000' : '#ffffff';
+}
 
 /**
  * 
@@ -21,7 +43,8 @@ let circleParams = {
  *  cy: number;
  *  radius: number;
  *  bgcolor: number;
- * }} params 
+ * }} params
+ * @return {Promise<HTMLElement>}
  */
 function rerenderCircle(params) {
   const { cx, cy, radius, bgcolor } = params;
@@ -30,11 +53,22 @@ function rerenderCircle(params) {
   circle.style.top = cy + 'px';
   circle.style.backgroundColor = bgcolor;
   circle.style.width = circle.style.height = 0;
+  circle.style.fontSize = params.radius / 4 + 'px';
+  circle.style.color = getContrastColor(bgcolor);
+  circle.textContent = '';
   resultBox.append(circle);
 
-  setTimeout(() => {
-    circle.style.height = circle.style.width = radius * 2 + 'px';
+  return new Promise(res => {
+    setTimeout(() => {
+      circle.style.height = circle.style.width = radius * 2 + 'px';
+
+      circle.addEventListener('transitionend', function handler() {
+        circle.removeEventListener('transitionend', handler);
+        res(circle);
+      });
+    })
   })
+
 
   
 }
@@ -75,7 +109,8 @@ bindOnChangeHandler(controlForm.elements, handleChange);
  */
 const handleSubmit = (evt) => {
   evt.preventDefault();
-  rerenderCircle(circleParams);
+  rerenderCircle(circleParams)
+    .then(elem => elem.textContent = 'Hello World!');
 }
 
 controlForm.addEventListener('submit', handleSubmit);
