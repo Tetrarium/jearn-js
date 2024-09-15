@@ -2,9 +2,7 @@ const resultBox = document.querySelector('#result');
 const circle = document.createElement('div');
 circle.className = 'circle';
 
-
 const controlForm = document.getElementById('circle-control');
-console.dir(controlForm.elements);
 
 let circleParams = {
   cx: 150,
@@ -28,11 +26,8 @@ function getContrastColor(hex) {
       return parseInt(hex.substring(j, j + 2), 16);
     });
   
-  console.log(r, g, b);
   const brightness = (r * 299 + g * 587 + b * 114) / 1000;
 
-  console.log(brightness);
-  console.log(brightness > 128);
   return brightness > 128 ? '#000000' : '#ffffff';
 }
 
@@ -72,11 +67,6 @@ function rerenderCircle(params) {
 
   
 }
-
-// renderCircle(circleParams);
-
-console.log(controlForm.elements)
-
 
 /**
  * 
