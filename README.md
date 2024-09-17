@@ -78,3 +78,4 @@
   - [11.5 Promise API](./chapter11/ch11_05/)
   - [11.6 Промисификация](./chapter11/ch11_06/)
   - [11.7 Микрозадачи](./chapter11/ch11_07/)
+  - [11.8 Async/await](./chapter11/ch11_08/)
