@@ -126,3 +126,37 @@ const task11_8_3 = () => {
   f();
 }
 // task11_8_3();
+
+
+const task11_8_4 = () => {
+
+  /**
+   * 
+   * @param {{ id: number }[]} array 
+   */
+  function Store(array) {
+    this.array = array;
+
+    this.getSortedArr = function() {
+      const result = this.array.toSorted((a, b) => a.id - b.id);
+      Object.freeze(result)
+      return result;
+    }
+  }
+
+  const arr = [
+    {id: 1},
+    {id: 5},
+    {id: 2},
+    {id: 4},
+    {id: 10},
+    {id: 7},
+  ]
+
+  const store = new Store(arr);
+
+  sorted = store.getSortedArr();
+  console.log(sorted);
+  sorted.push(1);
+}
+task11_8_4();
