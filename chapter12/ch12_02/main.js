@@ -172,4 +172,4 @@ const example12_2_7 = () => {
     }
   })();
 }
-example12_2_7();
+// example12_2_7();
