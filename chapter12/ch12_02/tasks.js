@@ -169,9 +169,8 @@ const task12_2_7 = () => {
   async function* generateDataFromFile(path) {
     const data = await fetch(path)
       .then(response => response.text());
-    console.log(data);
+      
     const strings = data.split('\n');
-    console.log(strings);
 
     for (const string of strings) {
       yield string;
