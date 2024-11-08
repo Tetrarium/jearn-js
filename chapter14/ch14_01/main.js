@@ -543,8 +543,16 @@ const gpt4 = () => {
   // Если свойство запрашивается впервые, оно инициализируется значением по умолчанию.
   // Например, если свойство name отсутствует, оно инициализируется строкой "Неизвестно".
 
-  function createLazyInitializationProxy() {
+  function createLazyInitializationProxy(target) {
     /* ToDo */
+    return new Proxy(target, {
+      get(target, prop, receiver) {
+        if (!(prop in target)) {
+          Reflect.set(target, prop, 'Неизвестно', receiver);
+        }
+        return Reflect.get(target, prop, receiver);
+      }
+    })
   }
 
   const person = {};
@@ -552,6 +560,8 @@ const gpt4 = () => {
 
   console.log(proxy.name); // Должно вернуть "Неизвестно"
   console.log(proxy.age);  // Должно вернуть "Неизвестно"
+  proxy.isAdmin = true;
+  console.log(proxy.isAdmin);
 }
 // gpt4();
 
@@ -563,8 +573,25 @@ const gpt5 = () => {
   // сколько раз было прочитано каждое свойство объекта.
   // Храните это количество в отдельном объекте.
 
-  function createAccessCountingProxy() {
+  function createAccessCountingProxy(target) {
     /* ToDo */
+    const accessCount = {};
+
+    for (const prop in target) {
+      accessCount[prop] = 0;
+    }
+
+    const proxy = new Proxy(target, {
+      get(target, prop, receiver) {
+        accessCount[prop] += 1
+        return Reflect.get(target, prop, receiver);
+      }
+    });
+
+    return {
+      proxy,
+      accessCount,
+    }
   }
 
   const obj = { name: 'Alice', age: 25 };
@@ -583,13 +610,35 @@ const gpt6 = () => {
   // Создайте Proxy, который ограничивает количество вызовов метода объекта.
   // Если метод вызывается больше допустимого количества раз, выбросите ошибку.
 
-  function createLimitedCallsProxy() {
+  function createLimitedCallsProxy(target, prop, limit) {
     /* ToDo */
+    let count = 0;
+   
+    return new Proxy(target, {
+      get(target, key, receiver) {
+        if (key === prop) {
+          return new Proxy(target[key], {
+            apply(target, thisArg, args) {
+              if (count < limit) {
+                count += 1;
+                return Reflect.apply(target, thisArg, args);
+              }
+              throw new Error(`Ошибка: Метод ${prop} вызван слишком много раз`);
+            }
+          })
+        }
+
+        return Reflect.get(target, key, receiver);
+      }
+    });
   }
 
   const obj = {
     greet() {
       console.log("Hello!");
+    },
+    bye() {
+      console.log('Bye!');
     }
   };
   const proxy = createLimitedCallsProxy(obj, 'greet', 3);
@@ -597,6 +646,7 @@ const gpt6 = () => {
   proxy.greet(); // "Hello!"
   proxy.greet(); // "Hello!"
   proxy.greet(); // "Hello!"
+  proxy.bye();
   proxy.greet(); // Ошибка: Метод greet вызван слишком много раз
   
 }
