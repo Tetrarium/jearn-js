@@ -93,4 +93,6 @@
 
 - [Глава 14. Разное](./chapter14/)
 
-  - [13.1 Proxy и Reflect](./chapter14/ch14_01/)
+  - [14.1 Proxy и Reflect](./chapter14/ch14_01/)
+  - [14.2 Eval: выполнение строки кода](./chapter14/ch14_02/)
+  - [14.3 Каррирование](./chapter14/ch14_03/)
