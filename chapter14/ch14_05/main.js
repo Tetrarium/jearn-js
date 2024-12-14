@@ -76,5 +76,20 @@ const example14_5_3 = () => {
   const admin = editor | ACCESS.ADMIN;
   console.log(admin); // 31
   console.log(admin.toString(2)); // 11111
+
+  console.log(editor & ACCESS.ADMIN);
+  console.log(editor & ACCESS.ARTICLE_EDIT);
+
+  const check = ACCESS.ARTICLE_EDIT | ACCESS.GOODS_EDIT;
+  console.log(check.toString(2));
+  console.log( admin & check );
+  console.log( editor & check );
+  console.log( guest & check );
 }
 example14_5_3();
+
+
+const example14_5_4 = () => {
+
+}
+// example14_5_4();
