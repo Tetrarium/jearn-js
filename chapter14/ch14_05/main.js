@@ -86,10 +86,48 @@ const example14_5_3 = () => {
   console.log( editor & check );
   console.log( guest & check );
 }
-example14_5_3();
+// example14_5_3();
 
 
 const example14_5_4 = () => {
+  // Округление
+  const num = 1.63455;
+  console.log(~~num);
+  console.log(num ^ 0);
+  console.log(num * 12345.6 ^ 0);
 
+  console.log(1.6 + 1.4 ^ 0);
+  console.log(num | 0);
 }
 // example14_5_4();
+
+const example14_5_5 = () => {
+  const inputStates = [
+    [0, 0],
+    [0, 1],
+    [1, 0],
+    [1, 1],
+  ]
+
+  function xor(a, b) {
+    return a ^ b;
+  }
+
+  function getResultsBinaryOp(states, binaryFn) {
+    return states.map(state => [...state, binaryFn(...state)]);
+  }
+
+  function myXor(a, b) {
+    return (a & ~b) | (~a & b);
+  }
+
+  console.log(getResultsBinaryOp(inputStates, xor));
+  console.log(getResultsBinaryOp(inputStates, myXor));
+}
+// example14_5_5();
+
+const example14_5_6 = () => {
+  const res = [1, 2, 3, 1, 2, 3, 5, 7].reduce((acc, x) => acc ^ x, 0);
+  console.log(res);
+}
+example14_5_6();
